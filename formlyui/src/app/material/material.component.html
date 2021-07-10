@@ -1,0 +1,9 @@
+<div class="content accent" role="main">
+
+    <div style="background-color: purple;">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+    </div>
+</div>
