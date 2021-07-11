@@ -5,6 +5,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -14,6 +15,7 @@ import { MatIconModule } from '@angular/material/icon';
   ],
   exports: [
     CommonModule,
+    RouterModule,
     MatFormFieldModule,
     ReactiveFormsModule,
     MatInputModule,
@@ -22,6 +24,7 @@ import { MatIconModule } from '@angular/material/icon';
   ],
   imports: [
     CommonModule,
+    RouterModule,
     MatFormFieldModule,
     ReactiveFormsModule,
     MatInputModule,
