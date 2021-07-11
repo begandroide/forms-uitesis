@@ -1,0 +1,51 @@
+<div id="main">
+
+    <!-- TOOLBAR: Above -->
+    <ng-container>
+        <ng-container *ngTemplateOutlet="toolbar"></ng-container>
+    </ng-container>
+    <!-- / TOOLBAR: Above -->
+
+    <div id="container-1" class="container">
+
+        <div id="container-2" class="container">
+
+
+            <div id="container-3" class="container">
+
+                <!-- CONTENT -->
+                <router-outlet *ngIf="true"></router-outlet>
+                <!-- / CONTENT -->
+
+            </div>
+
+            <!-- FOOTER: Below fixed -->
+            <ng-container>
+                <ng-container *ngTemplateOutlet="footer"></ng-container>
+            </ng-container>
+            <!-- / FOOTER: Below fixed -->
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- @ PARTIALS                                                                                            -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+
+<!-- TOOLBAR -->
+<ng-template #toolbar>
+    <toolbar>
+    </toolbar>
+</ng-template>
+<!-- / TOOLBAR -->
+
+<!-- FOOTER -->
+<ng-template #footer>
+    <footer>
+    </footer>
+</ng-template>
+<!-- / FOOTER -->
