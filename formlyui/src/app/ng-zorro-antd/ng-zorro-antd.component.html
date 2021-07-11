@@ -1,0 +1,24 @@
+<nz-breadcrumb>
+    <nz-breadcrumb-item>Formly</nz-breadcrumb-item>
+    <nz-breadcrumb-item>UI</nz-breadcrumb-item>
+    <nz-breadcrumb-item>NG-ZORRO</nz-breadcrumb-item>
+</nz-breadcrumb>
+
+<div class="content accent" role="main">
+
+    <form nz-form [nzLayout]="'vertical'" [formGroup]="form" (ngSubmit)="onSubmit()">
+        <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
+        <nz-space nzSize="middle" [nzSplit]="sep">
+            <button *nzSpaceItem nz-button nzType="primary" type="submit">
+                Submit
+            </button>
+            <button *nzSpaceItem nz-button nzType="primary" nzDanger type="reset">
+                Reset
+            </button>
+        </nz-space>
+    </form>
+</div>
+
+<ng-template #sep [ngOutletContext]="context">
+    Hi
+</ng-template>
