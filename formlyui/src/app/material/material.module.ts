@@ -6,7 +6,9 @@ import { FormlyMaterialModule } from '@ngx-formly/material';
 import { SharedModule } from '../shared/shared.module';
 import { FormlyModule } from '@ngx-formly/core';
 import { MaterialRoutingModule } from './material-routing.module';
-
+import { LayoutModule } from '../layout/layout.module';
+import { FormlyMatToggleModule } from '@ngx-formly/material/toggle';
+import { FormlyMatSliderModule } from '@ngx-formly/material/slider';
 @NgModule({
   declarations: [
     MaterialComponent,
@@ -15,6 +17,7 @@ import { MaterialRoutingModule } from './material-routing.module';
   imports: [
     MaterialRoutingModule,
     SharedModule,
+    LayoutModule,
     FormlyModule.forChild({
       extras: { lazyRender: true }, validationMessages: [
         { name: 'required', message: 'This field is required' },
@@ -24,6 +27,8 @@ import { MaterialRoutingModule } from './material-routing.module';
       ],
     }),
     FormlyMaterialModule,
+    FormlyMatToggleModule,
+    FormlyMatSliderModule
   ]
 })
 export class MaterialModule { }
