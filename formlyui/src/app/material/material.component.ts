@@ -30,14 +30,7 @@ export class MaterialComponent implements OnInit {
         rows: 4,
         description: 'Descripción',
         minLength: 10,
-        maxLength: 30,
-        templateManipulators: {
-          preWrapper: [
-            (f): string => {
-              return f.defaultValue;
-            }
-          ]
-        }
+        maxLength: 30
       },
       validation: {
         messages: {

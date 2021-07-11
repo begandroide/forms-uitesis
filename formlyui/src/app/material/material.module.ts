@@ -9,6 +9,14 @@ import { MaterialRoutingModule } from './material-routing.module';
 import { LayoutModule } from '../layout/layout.module';
 import { FormlyMatToggleModule } from '@ngx-formly/material/toggle';
 import { FormlyMatSliderModule } from '@ngx-formly/material/slider';
+import { FormlyMatFormFieldModule } from '@ngx-formly/material/form-field';
+import { FormlyMatCheckboxModule } from '@ngx-formly/material/checkbox';
+import { FormlyMatInputModule } from '@ngx-formly/material/input';
+import { FormlyMatMultiCheckboxModule } from '@ngx-formly/material/multicheckbox';
+import { FormlyMatRadioModule } from '@ngx-formly/material/radio';
+import { FormlyMatSelectModule } from '@ngx-formly/material/select';
+import { FormlyMatTextAreaModule } from '@ngx-formly/material/textarea';
+import { MatSelectModule } from '@angular/material/select';
 @NgModule({
   declarations: [
     MaterialComponent,
@@ -23,12 +31,20 @@ import { FormlyMatSliderModule } from '@ngx-formly/material/slider';
         { name: 'required', message: 'This field is required' },
       ],
       types: [
-        { name: 'custom', component: CustomInputExampleComponent },
+        { name: 'custom', component: CustomInputExampleComponent, wrappers: ['form-field'] },
       ],
     }),
+    MatSelectModule,
     FormlyMaterialModule,
     FormlyMatToggleModule,
-    FormlyMatSliderModule
+    FormlyMatSliderModule,
+    FormlyMatFormFieldModule,
+    FormlyMatCheckboxModule,
+    FormlyMatInputModule,
+    FormlyMatMultiCheckboxModule,
+    FormlyMatRadioModule,
+    FormlyMatSelectModule,
+    FormlyMatTextAreaModule,
   ]
 })
 export class MaterialModule { }
