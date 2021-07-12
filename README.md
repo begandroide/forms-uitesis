@@ -53,6 +53,7 @@ Además posee las funcionalidades:
 
 ## RoadMap
 
+- [ ] Incluir Tailwindcss
 - [ ] Crear módulo de gestión de encuestas.
 - [ ] Crear Componente Sección
 - [ ] Crear Componente que añadirá controles a las secciones.
