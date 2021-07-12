@@ -16,9 +16,59 @@ export class NgZorroAntdComponent implements OnInit {
   options: FormlyFormOptions = {
     formState: {
       awesomeIsForced: false,
-    },
+    }
   };
   fields: FormlyFieldConfig[] = [
+    {
+      key: 'test1',
+      fieldGroupClassName: 'grid grid-cols-3 gap-4',
+      fieldGroup: [
+        {
+          key: 'nombre2',
+          type: 'input',
+          className: "col-span-3 md:col-span-1",
+          templateOptions: {
+            label: 'Título',
+            placeholder: 'Ingresa el título de la sección',
+            required: true,
+            type: 'text',
+          }
+        },
+        {
+          key: 'nombre1',
+          type: 'input',
+          className: "col-span-3 md:col-span-1",
+          templateOptions: {
+            label: 'Título',
+            placeholder: 'Ingresa el título de la sección',
+            required: true,
+            type: 'text',
+          }
+        },
+        {
+          key: 'nombre3',
+          type: 'input',
+          className: "col-span-3 md:col-span-1",
+          templateOptions: {
+            label: 'Título',
+            placeholder: 'Ingresa el título de la sección',
+            required: true,
+            type: 'text',
+          }
+        },
+        {
+          key: 'nombre4',
+          type: 'input',
+          className: 'col-span-3 md:col-span-1',
+          templateOptions: {
+            label: 'Título',
+            placeholder: 'Ingresa el título de la sección',
+            required: true,
+            type: 'text',
+          }
+        },
+      ]
+    },
     {
       key: 'investments',
       type: 'formarray',
@@ -63,10 +113,12 @@ export class NgZorroAntdComponent implements OnInit {
         {
           key: 'nombre',
           type: 'input',
+          className: 'col-span-3',
           templateOptions: {
+            label: 'Título',
+            placeholder: 'Ingresa el título de la sección',
             required: true,
             type: 'text',
-            label: 'Título'
           }
         },
         {
