@@ -20,6 +20,75 @@ export class NgZorroAntdComponent implements OnInit {
   };
   fields: FormlyFieldConfig[] = [
     {
+      key: 'investments',
+      type: 'formarray',
+      templateOptions: {
+        addText: 'Add another investment',
+      },
+      fieldArray: {
+        fieldGroup: [
+          {
+            className: 'col-sm-4',
+            type: 'input',
+            key: 'investmentName',
+            templateOptions: {
+              label: 'Name of Investment:',
+              required: true,
+            },
+          },
+          {
+            type: 'input',
+            key: 'investmentDate',
+            className: 'col-sm-4',
+            templateOptions: {
+              type: 'date',
+              label: 'Date of Investment:',
+            },
+          },
+          {
+            type: 'input',
+            key: 'stockIdentifier',
+            className: 'col-sm-4',
+            templateOptions: {
+              label: 'Stock Identifier:',
+            },
+          },
+        ],
+      }
+    },
+    {
+      key: 'address',
+      templateOptions: { label: 'Address' },
+      fieldGroup: [
+        {
+          key: 'nombre',
+          type: 'input',
+          templateOptions: {
+            required: true,
+            type: 'text',
+            label: 'Título'
+          }
+        },
+        {
+          key: 'descripcion',
+          type: 'input',
+          templateOptions: {
+            required: true,
+            type: 'text',
+            label: 'Descripción de la sección'
+          }
+        },
+      ]
+    },
+    {
+      type: 'section',
+      key: 'section1',
+      templateOptions: {
+        sectionName: 'Nombre de la sección',
+        sectionDescription: 'Nombre de la sección'
+      }
+    },
+    {
       key: 'text',
       type: 'textarea',
       templateOptions: {
@@ -29,16 +98,12 @@ export class NgZorroAntdComponent implements OnInit {
         cols: 3,
         rows: 4,
         description: 'Descripción',
-        minLength: 10,
-        maxLength: 30
       },
       validation: {
         messages: {
           required: (error, field: FormlyFieldConfig) => `Texto es un campo requerido`,
         },
-      },
-      validators: [Validators.required]
-      // hide: true
+      }
     },
     {
       key: 'nested.story',
@@ -131,6 +196,17 @@ export class NgZorroAntdComponent implements OnInit {
       },
     },
     {
+      key: 'Slider',
+      type: 'slider',
+      templateOptions: {
+        label: 'Slider label',
+        // placeholder: 'Slider Placeholder',
+        // thumbLabel: true,
+        description: 'Slider Description',
+        required: true,
+      },
+    },
+    {
       key: 'whyNot',
       type: 'textarea',
       expressionProperties: {
@@ -161,5 +237,29 @@ export class NgZorroAntdComponent implements OnInit {
 
 
   ngOnInit(): void {
+    setTimeout(()=>{
+      this.fields = [
+        ...this.fields,
+        {
+          key: 'name',
+          type: 'input',
+          templateOptions: {
+            label: 'Name (required)',
+            required: true,
+          },
+        },
+        {
+          key: 'age',
+          type: 'input',
+          templateOptions: {
+            label: 'Age (min= 18, max= 40)',
+            type: 'number',
+            min: 18,
+            max: 40,
+            required: true,
+          },
+        } 
+      ];
+    }, 1000);
   }
 }
