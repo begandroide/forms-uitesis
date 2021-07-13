@@ -1,49 +1,51 @@
-<nz-layout class="app-layout">
-  <nz-sider class="menu-sidebar"
+<nz-layout class="min-h-screen">
+  <nz-sider class="relative z-10 min-h-screen shadow-inner"
             nzCollapsible
             nzWidth="256px"
             nzBreakpoint="md"
             [(nzCollapsed)]="isCollapsed"
             [nzTrigger]="null">
-    <div class="sidebar-logo">
-      <a href="https://ng.ant.design/" target="_blank">
-        <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
-        <h1>Ant Design Of Angular</h1>
-      </a>
-    </div>
-    <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
-      <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
-        <ul>
-          <li nz-menu-item nzMatchRouter>
-            <a routerLink="/welcome">Welcome</a>
-          </li>
-          <li nz-menu-item nzMatchRouter>
-            <a routerLink="/material">Material</a>
-          </li>
-          <li nz-menu-item nzMatchRouter>
-            <a routerLink="/antd">Ng zorro Antd</a>
-          </li>
-        </ul>
-      </li>
-      <li nz-submenu nzOpen nzTitle="Form" nzIcon="form">
-        <ul>
-          <li nz-menu-item nzMatchRouter>
-            <a>Basic Form</a>
-          </li>
-        </ul>
-      </li>
-    </ul>
+            <div class="h-[64px] bg-gray-200 m-[16px]"></div>
+
+            <ul nz-menu nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+              <li ngClass="" nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
+                <ul>
+                  <li nz-menu-item nzMatchRouter>
+                    <a routerLink="/welcome">Welcome</a>
+                  </li>
+                  <li nz-menu-item nzMatchRouter>
+                    <a routerLink="/material">Material</a>
+                  </li>
+                  <li nz-menu-item nzMatchRouter>
+                    <a routerLink="/antd">Ng zorro Antd</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="" nz-submenu nzOpen nzTitle="Form" nzIcon="form">
+                <ul>
+                  <li nz-menu-item nzMatchRouter>
+                    <a>Basic Form</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
   </nz-sider>
   <nz-layout>
-    <nz-header>
-      <div class="app-header">
-        <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
-            <i class="trigger"
-               nz-icon
+    <nz-header class="relative h-20 p-0 shadow-inner">
+      <div class="grid grid-cols-3 gap-4 h-20 p-4 text-base cursor-pointer transition duration-300 ease-in-out">
+        <span  class="cols-span-2" (click)="isCollapsed = !isCollapsed">
+          <i class="text-black dark:text-white" nz-icon
                [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
             ></i>
-        </span>
+          </span>
+          <div class="flex justify-between items-center col-span-1">
+              <h2 class="text-black dark:text-white">Toggle me</h2>
+              <!-- <div class="w-16 h-10 flex items-center bg-gray-300 rounded-full p-1 duration-100 ease-in-out" [ngClass]="{ 'bg-green-400': toggleActive}">
+                  <div class="bg-white w-8 h-8 rounded-full shadow-md transform duration-100 ease-in-out" [ngClass]="{ 'translate-x-6': toggleActive}"></div>
+              </div> -->
+          </div>
       </div>
+            
     </nz-header>
     <nz-content>
       <div class="inner-content">
