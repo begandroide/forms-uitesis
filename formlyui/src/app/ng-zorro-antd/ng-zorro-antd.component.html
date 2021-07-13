@@ -1,26 +1,43 @@
-<nz-breadcrumb>
+<!-- <nz-breadcrumb>
     <nz-breadcrumb-item>Formly</nz-breadcrumb-item>
     <nz-breadcrumb-item>UI</nz-breadcrumb-item>
     <nz-breadcrumb-item>NG-ZORRO</nz-breadcrumb-item>
-</nz-breadcrumb>
+</nz-breadcrumb> -->
+
+<div class="flex w-full items-end justify-end gap-4">
+    <button nz-button nzSize="large" [nz-tooltip]="'Añadir imagen de encabezado'" nzTooltipPlacement="top"  nzType="default" nzShape="circle" class="hover:shadow-2xl transition duration-300 hover:scale-110">
+        <i nz-icon [nzType]="'picture'" style="font-size: 1.3em;"></i>
+    </button>
+    <button nz-button nzSize="large" [nz-tooltip]="'Cambiar color del tema'" nzTooltipPlacement="top" nzType="default" nzShape="circle" class="hover:shadow-2xl transition duration-300 hover:scale-110">
+        <i nz-icon [nzType]="'bg-colors'" style="font-size: 1.3em;"></i>
+    </button>
+    <button nz-button nzSize="large" [nz-tooltip]="'Configuración de la encuesta'" nzTooltipPlacement="top" nzType="default" nzShape="circle" class="hover:shadow-2xl transition duration-300 hover:scale-110">
+        <i nz-icon [nzType]="'setting'" style="font-size: 1.3em;"></i>
+    </button>
+</div>
 
 <div class="content accent" role="main">
-
-    <form nz-form [nzLayout]="'vertical'" [formGroup]="form" (ngSubmit)="onSubmit()">
-        <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
-        <nz-space nzSize="middle" [nzSplit]="sep">
-            <button *nzSpaceItem nz-button nzType="primary" type="submit">
-                Submit
-            </button>
-            <button *nzSpaceItem nz-button nzType="primary" nzDanger type="reset">
-                Reset
-            </button>
-        </nz-space>
-    </form>
-
-    <span>
-        {{ form.value | json}}
-    </span>
+    <nz-tabset nzCentered>
+        <nz-tab nzTitle="Prueba">
+            <form nz-form [nzLayout]="'vertical'" [formGroup]="form" (ngSubmit)="onSubmit()">
+                <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
+                <nz-space nzSize="middle" [nzSplit]="sep">
+                    <button *nzSpaceItem nz-button nzType="primary" type="submit">
+                        Submit
+                    </button>
+                    <button *nzSpaceItem nz-button nzType="primary" nzDanger type="reset">
+                        Reset
+                    </button>
+                </nz-space>
+            </form>
+        
+            <span>
+                {{ form.value | json}}
+            </span>
+        </nz-tab>
+        <nz-tab nzTitle="Preguntas">Hola !</nz-tab>
+        <nz-tab nzTitle="Respuestas">Content of Tab Pane 2</nz-tab>
+    </nz-tabset>
 </div>
 
 <ng-template #sep>

@@ -70,6 +70,10 @@ export class NgZorroAntdComponent implements OnInit {
       ]
     },
     {
+      type: 'header',
+      key: '1'
+    },
+    {
       key: 'investments',
       type: 'formarray',
       templateOptions: {

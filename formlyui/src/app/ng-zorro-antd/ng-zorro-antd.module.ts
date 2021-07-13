@@ -25,13 +25,19 @@ import { SliderComponent } from './components/slider/slider.component';
 import { FormArrayComponent } from './components/form-array/form-array.component';
 import { SectionComponent } from './components/section/section.component';
 import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzTabsModule } from 'ng-zorro-antd/tabs';
+import { HeaderComponent } from './wrappers/header/header.component';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { IconsProviderModule } from '../icons-provider.module';
+import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 
 @NgModule({
   declarations: [
     NgZorroAntdComponent,
     SliderComponent,
     FormArrayComponent,
-    SectionComponent
+    SectionComponent,
+    HeaderComponent
   ],
   imports: [
     NgZorroAntdRoutingModule,
@@ -43,6 +49,9 @@ import { NzInputModule } from 'ng-zorro-antd/input';
       extras: { lazyRender: true }, validationMessages: [
         { name: 'required', message: 'This field is required' },
       ],
+      wrappers: [
+        { name: 'header', component: HeaderComponent },
+      ],
       types: [
         { name: 'slider', component: SliderComponent, wrappers: ['form-field'] },
         { name: 'formarray', component: FormArrayComponent, wrappers: ['form-field'] },
@@ -51,10 +60,41 @@ import { NzInputModule } from 'ng-zorro-antd/input';
           name: 'section', 
           component: SectionComponent, 
           wrappers: ['form-field'],
+        },
+        { 
+          name: 'header',
+          extends: 'formly-group',
+          wrappers: ['header'],
           defaultOptions: {
+            fieldGroupClassName: 'row',
+            templateOptions: {
+              label: 'hola'
+            },
             fieldGroup: [
-              { type: 'input', key: 'title' },
-              { type: 'input', key: 'description' },
+              {
+                type: 'input', key: 'name',
+                templateOptions: { required: true },
+                className: 'col-6',
+                validation: {
+                  messages: {
+                    required: 'required',
+                  },
+                }, 
+              },
+              { 
+                type: 'select',
+                key: 'profession',
+                className: 'col-6',
+                templateOptions: {
+                  required: true,
+                  options: [
+                    { label: 1, value: 1 },
+                    { label: 2, value: 2 },
+                    { label: 3, value: 3 },
+                    { label: 4, value: 4 },
+                  ]
+                }
+              },
             ]
           }
         },
@@ -67,7 +107,10 @@ import { NzInputModule } from 'ng-zorro-antd/input';
     NzSliderModule,
     NzDatePickerModule,
     NzInputModule,
+    NzToolTipModule,
+    IconsProviderModule,
     NzCardModule,
+    NzTabsModule,
     FormlyNgZorroAntdModule,
     FormlyNzFormFieldModule,
     FormlyNzCheckboxModule,
