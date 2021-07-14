@@ -2,6 +2,7 @@ import { Component, ComponentFactoryResolver, OnInit, ViewChild, ViewContainerRe
 import { FormControl } from '@angular/forms';
 import { FieldWrapper } from '@ngx-formly/core';
 import { SliderComponent } from '../../components/slider/slider.component';
+import { DynamicFormsService } from '../../services/dynamic-forms.service';
 
 @Component({
   selector: 'app-container',
@@ -13,23 +14,23 @@ export class ContainerComponent extends FieldWrapper implements OnInit {
   selectorInputType = new FormControl();
 
   constructor(
-    private componentFactoryResolver: ComponentFactoryResolver
+    private dynamicFormService: DynamicFormsService
   ) { 
     super();
   }
   ngOnInit(): void { }
 
   public changeComponent() {
-    this.key
-    this.dynamicContent.clear();
-    // create the component factory  
-    const dynamicComponentFactory = this.componentFactoryResolver.resolveComponentFactory(SliderComponent);  
-    // add the component to the view  
-    const componentRef = this.dynamicContent.createComponent(dynamicComponentFactory);  
+    // this.key
+    // this.dynamicContent.clear();
+    // // create the component factory  
+    // const dynamicComponentFactory = this.componentFactoryResolver.resolveComponentFactory(SliderComponent);  
+    // // add the component to the view  
+    // const componentRef = this.dynamicContent.createComponent(dynamicComponentFactory);  
   }
 
   public addQuestion(): void {
-    const indexFieldInGroup = (this.field as any).index;
-    this.field.fieldGroup?.splice(indexFieldInGroup + 1, 0, {...this.field});
+    const indexFieldInGroup = (this.field as any).index ?? 0;
+    this.dynamicFormService.updateField({index: indexFieldInGroup, config: this.field});
   }
 }
