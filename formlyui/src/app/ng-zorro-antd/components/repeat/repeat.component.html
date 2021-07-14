@@ -1,11 +1,11 @@
 <div (cdkDropListDropped)="drop($event)" cdkDropList class="formly-drag-drop row">
     <div *ngFor="let field of field.fieldGroup; let i = index;" cdkDrag class="p-4">
-        <formly-field [field]="field">
-            <div class="col-sm-2 d-flex align-items-center">
+        <formly-field [field]="field" @fade>
+            <!-- <div class="col-sm-2 d-flex align-items-center">
                 <button class="btn btn-default" type="button" (click)="moveUp(i)"> up </button>
                 <button class="btn btn-default" type="button" (click)="moveDown(i)"> down </button>
                 <button class="btn btn-danger" type="button" (click)="remove(i)">Remove</button>
-            </div>
+            </div> -->
         </formly-field>
     </div>
 </div>

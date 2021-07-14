@@ -1,3 +1,4 @@
+import { trigger, transition, style, animate } from '@angular/animations';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { isEmptyExpression } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
@@ -8,7 +9,16 @@ import { DynamicFormsService } from '../../services/dynamic-forms.service';
 @Component({
   selector: 'app-repeat',
   templateUrl: './repeat.component.html',
-  styleUrls: ['./repeat.component.scss']
+  styleUrls: ['./repeat.component.scss'],
+  animations: [trigger('fade', [      
+    transition('void => *', [
+      style({opacity: 0}),
+      animate(1000, style({opacity: 1}))
+    ]),
+    transition('* => void', [
+      animate(1000, style({opacity: 0}))
+    ])
+  ])]
 })
 export class RepeatComponent extends FieldArrayType implements OnInit {
   constructor(private dynamicFormService: DynamicFormsService) {
@@ -16,15 +26,20 @@ export class RepeatComponent extends FieldArrayType implements OnInit {
   }
   
   ngOnInit() {
-    this.dynamicFormService.onUpdateFields.subscribe((value) => {
-      if (Object.keys(value).length > 0) {
-        this.addAtIndex(value.index ?? 0);
+    this.dynamicFormService.onAddField.subscribe((index) => {
+      if (index >= 0) {
+        this.addAtIndex(index ?? 0);
+      }
+    });
+    this.dynamicFormService.onDeleteField.subscribe((index) => {
+      if (index >= 0) {
+        this.remove(index);
       }
     });
   }
 
   addAtIndex(index: number) {
-    this.add((index + 1), {markAsDirty: {markAsDirty: true}});
+    this.add((index) + 1, undefined,  {markAsDirty: false});
   }
 
   moveUp(i: number) {
