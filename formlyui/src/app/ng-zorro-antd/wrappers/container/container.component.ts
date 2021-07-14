@@ -30,7 +30,14 @@ export class ContainerComponent extends FieldWrapper implements OnInit {
   }
 
   public addQuestion(): void {
-    const indexFieldInGroup = (this.field as any).index ?? 0;
-    this.dynamicFormService.updateField({index: indexFieldInGroup, config: this.field});
+    this.dynamicFormService.addField(this.indexFieldGroup);
+  }
+
+  public removeQuestion() {
+    this.dynamicFormService.deleteField(this.indexFieldGroup);
+  }
+
+  private get indexFieldGroup() {
+    return (this.field as any)?.index ?? 0;
   }
 }

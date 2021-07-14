@@ -3,8 +3,8 @@
         <div class="h-full w-min relative justify-start">
             <div class="px-1 h-full w-0.5 bg-green-400 rounded-l-lg"></div>
         </div>
-        <div class="p-4 w-full">
-            <h3 class="card-header">{{ to.label }}</h3>
+        <div class="p-4 w-full divide-y-4 divide-gray-600 divide-solid">
+            <!-- <h3 class="card-header">{{ to.label }}</h3> -->
             <div class="flex flex-row gap-2">
                 <div class="flex-1">
                     <ng-container #fieldComponent></ng-container>
@@ -22,6 +22,12 @@
                     </nz-select>
                 </div>
 
+                <ng-container #field></ng-container>
+            </div>
+            <div class="w-full flex flex-row gap-1">
+                <button nz-button (click)="removeQuestion()">
+                    <i nz-icon nzType="delete"></i>
+                </button>
             </div>
         </div>
     </div>
