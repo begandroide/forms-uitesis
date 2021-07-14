@@ -34,6 +34,7 @@ import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { ContainerComponent } from './wrappers/container/container.component';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { DragAndDropComponent } from './components/drag-and-drop/drag-and-drop.component';
+import { RepeatComponent } from './components/repeat/repeat.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { DragAndDropComponent } from './components/drag-and-drop/drag-and-drop.c
     SectionComponent,
     HeaderComponent,
     ContainerComponent,
-    DragAndDropComponent
+    DragAndDropComponent,
+    RepeatComponent
   ],
   imports: [
     NgZorroAntdRoutingModule,
@@ -63,43 +65,44 @@ import { DragAndDropComponent } from './components/drag-and-drop/drag-and-drop.c
         { name: 'slider', component: SliderComponent, wrappers: ['form-field'] },
         { name: 'formarray', component: FormArrayComponent, wrappers: ['form-field'] },
         { name: 'section', component: SectionComponent, wrappers: ['form-field'] },
+        { name: 'repeat', component: RepeatComponent },
         { 
           name: 'drag-drop',
-          extends: 'formly-group',
+          // extends: 'formly-group',
           // wrappers: ['container'],
           component: DragAndDropComponent,
-          defaultOptions: {
-            fieldGroupClassName: 'row',
-            templateOptions: {
-              label: 'hola'
-            },
-            fieldGroup: [
-              {
-                type: 'input', key: 'name',
-                templateOptions: { required: true },
-                className: 'col-6',
-                validation: {
-                  messages: {
-                    required: 'required',
-                  },
-                }, 
-              },
-              { 
-                type: 'select',
-                key: 'profession',
-                className: 'col-6',
-                templateOptions: {
-                  required: true,
-                  options: [
-                    { label: 1, value: 1 },
-                    { label: 2, value: 2 },
-                    { label: 3, value: 3 },
-                    { label: 4, value: 4 },
-                  ]
-                }
-              },
-            ]
-          }
+          // defaultOptions: {
+          //   fieldGroupClassName: 'row',
+          //   templateOptions: {
+          //     label: 'hola'
+          //   },
+          //   fieldGroup: [
+          //     {
+          //       type: 'input', key: 'name',
+          //       templateOptions: { required: true },
+          //       className: 'col-6',
+          //       validation: {
+          //         messages: {
+          //           required: 'required',
+          //         },
+          //       }, 
+          //     },
+          //     { 
+          //       type: 'select',
+          //       key: 'profession',
+          //       className: 'col-6',
+          //       templateOptions: {
+          //         required: true,
+          //         options: [
+          //           { label: 1, value: 1 },
+          //           { label: 2, value: 2 },
+          //           { label: 3, value: 3 },
+          //           { label: 4, value: 4 },
+          //         ]
+          //       }
+          //     },
+          //   ]
+          // }
         },
       ],
     }),
