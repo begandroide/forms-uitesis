@@ -11,13 +11,19 @@ export interface NewFormlyFieldConfig {
   providedIn: 'root'
 })
 export class DynamicFormsService {
-  private _onUpdateFields: BehaviorSubject<NewFormlyFieldConfig> = new BehaviorSubject({});
+  private _onAddField: BehaviorSubject<number> = new BehaviorSubject(-1);
+  private _onDeleteField: BehaviorSubject<number> = new BehaviorSubject(-1);
 
-  public readonly onUpdateFields: Observable<NewFormlyFieldConfig> = this._onUpdateFields.asObservable();
+  public readonly onAddField: Observable<number> = this._onAddField.asObservable();
+  public readonly onDeleteField: Observable<number> = this._onDeleteField.asObservable();
 
   constructor() { }
 
-  public updateField(newItem: NewFormlyFieldConfig) {
-    this._onUpdateFields.next(newItem);
+  public addField(index: number) {
+    this._onAddField.next(index);
+  }
+
+  public deleteField(index: number) {
+    this._onDeleteField.next(index);
   }
 }
