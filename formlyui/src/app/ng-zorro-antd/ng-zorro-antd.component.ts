@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
+import { DynamicFormsService } from './services/dynamic-forms.service';
 
 @Component({
   selector: 'app-ng-zorro-antd',
@@ -70,8 +71,76 @@ export class NgZorroAntdComponent implements OnInit {
       ]
     },
     {
-      type: 'header',
-      key: '1'
+      type: 'drag-drop',
+      key: '1',
+      fieldGroup: [
+        {
+          fieldGroupClassName: 'row',
+          templateOptions: {
+            label: 'hola'
+          },
+          wrappers: ['container'],
+          fieldGroup: [
+            {
+              type: 'input', key: 'name',
+              templateOptions: { required: true },
+              className: 'col-6',
+              validation: {
+                messages: {
+                  required: 'required',
+                },
+              }, 
+            },
+            { 
+              type: 'select',
+              key: 'profession',
+              className: 'col-6',
+              templateOptions: {
+                required: true,
+                options: [
+                  { label: 1, value: 1 },
+                  { label: 2, value: 2 },
+                  { label: 3, value: 3 },
+                  { label: 4, value: 4 },
+                ]
+              }
+            },
+        ]
+        },
+        {
+          fieldGroupClassName: 'row',
+          templateOptions: {
+            label: 'hola'
+          },
+          wrappers: ['container'],
+          fieldGroup: [
+            {
+              type: 'input', key: 'name',
+              templateOptions: { required: true },
+              className: 'col-6',
+              validation: {
+                messages: {
+                  required: 'required',
+                },
+              }, 
+            },
+            { 
+              type: 'select',
+              key: 'profession',
+              className: 'col-6',
+              templateOptions: {
+                required: true,
+                options: [
+                  { label: 1, value: 1 },
+                  { label: 2, value: 2 },
+                  { label: 3, value: 3 },
+                  { label: 4, value: 4 },
+                ]
+              }
+            },
+        ]
+        },
+      ]
     },
     {
       key: 'investments',
@@ -283,7 +352,9 @@ export class NgZorroAntdComponent implements OnInit {
     }
   ];
   
-  constructor() { }
+  constructor(
+    private dynamicFormsService: DynamicFormsService
+  ) { }
 
   onSubmit() {
     if (this.form.valid) {
@@ -293,29 +364,32 @@ export class NgZorroAntdComponent implements OnInit {
 
 
   ngOnInit(): void {
-    setTimeout(()=>{
-      this.fields = [
-        ...this.fields,
-        {
-          key: 'name',
-          type: 'input',
-          templateOptions: {
-            label: 'Name (required)',
-            required: true,
-          },
-        },
-        {
-          key: 'age',
-          type: 'input',
-          templateOptions: {
-            label: 'Age (min= 18, max= 40)',
-            type: 'number',
-            min: 18,
-            max: 40,
-            required: true,
-          },
-        } 
-      ];
-    }, 1000);
+    this.dynamicFormsService.onUpdateFields.subscribe((model) => {
+      console.log(model);
+    });
+    // setTimeout(()=>{
+    //   this.fields = [
+    //     ...this.fields,
+    //     {
+    //       key: 'name',
+    //       type: 'input',
+    //       templateOptions: {
+    //         label: 'Name (required)',
+    //         required: true,
+    //       },
+    //     },
+    //     {
+    //       key: 'age',
+    //       type: 'input',
+    //       templateOptions: {
+    //         label: 'Age (min= 18, max= 40)',
+    //         type: 'number',
+    //         min: 18,
+    //         max: 40,
+    //         required: true,
+    //       },
+    //     } 
+    //   ];
+    // }, 1000);
   }
 }

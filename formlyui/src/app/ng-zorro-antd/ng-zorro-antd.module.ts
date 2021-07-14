@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { NgZorroAntdRoutingModule } from './ng-zorro-antd-routing.module';
 import { SharedModule } from '../shared/shared.module';
@@ -30,6 +31,9 @@ import { HeaderComponent } from './wrappers/header/header.component';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { IconsProviderModule } from '../icons-provider.module';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
+import { ContainerComponent } from './wrappers/container/container.component';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { DragAndDropComponent } from './components/drag-and-drop/drag-and-drop.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +41,9 @@ import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
     SliderComponent,
     FormArrayComponent,
     SectionComponent,
-    HeaderComponent
+    HeaderComponent,
+    ContainerComponent,
+    DragAndDropComponent
   ],
   imports: [
     NgZorroAntdRoutingModule,
@@ -51,20 +57,17 @@ import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
       ],
       wrappers: [
         { name: 'header', component: HeaderComponent },
+        { name: 'container', component: ContainerComponent },
       ],
       types: [
         { name: 'slider', component: SliderComponent, wrappers: ['form-field'] },
         { name: 'formarray', component: FormArrayComponent, wrappers: ['form-field'] },
         { name: 'section', component: SectionComponent, wrappers: ['form-field'] },
         { 
-          name: 'section', 
-          component: SectionComponent, 
-          wrappers: ['form-field'],
-        },
-        { 
-          name: 'header',
+          name: 'drag-drop',
           extends: 'formly-group',
-          wrappers: ['header'],
+          // wrappers: ['container'],
+          component: DragAndDropComponent,
           defaultOptions: {
             fieldGroupClassName: 'row',
             templateOptions: {
@@ -106,6 +109,7 @@ import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
     NzSpaceModule,
     NzSliderModule,
     NzDatePickerModule,
+    NzSelectModule,
     NzInputModule,
     NzToolTipModule,
     IconsProviderModule,
@@ -118,6 +122,7 @@ import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
     FormlyNzRadioModule,
     FormlyNzSelectModule,
     FormlyNzTextAreaModule,
+    DragDropModule
   ]
 })
 export class NgZorroAntdModule { }
