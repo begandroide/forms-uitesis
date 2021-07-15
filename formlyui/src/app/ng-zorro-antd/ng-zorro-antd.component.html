@@ -19,21 +19,24 @@
 <div class="content accent" role="main">
     <nz-tabset nzCentered>
         <nz-tab nzTitle="Prueba">
-            <form nz-form [nzLayout]="'vertical'" [formGroup]="form" (ngSubmit)="onSubmit()">
-                <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
-                <nz-space nzSize="middle" [nzSplit]="sep">
-                    <button *nzSpaceItem nz-button nzType="primary" type="submit">
-                        Submit
-                    </button>
-                    <button *nzSpaceItem nz-button nzType="primary" nzDanger type="reset">
-                        Reset
-                    </button>
-                </nz-space>
-            </form>
-        
-            <span>
-                {{ form.value | json}}
-            </span>
+            <div class="flex flex-col w-full items-center justify-center">
+                
+                <form nz-form [nzLayout]="'vertical'" [formGroup]="form" (ngSubmit)="onSubmit()" class="w-5/6">
+                    <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
+                    <nz-space nzSize="middle" [nzSplit]="sep">
+                        <button *nzSpaceItem nz-button nzType="primary" type="submit">
+                            Submit
+                        </button>
+                        <button *nzSpaceItem nz-button nzType="primary" nzDanger type="reset">
+                            Reset
+                        </button>
+                    </nz-space>
+                </form>
+            
+                <span>
+                    {{ form.value | json}}
+                </span>
+            </div>
         </nz-tab>
         <nz-tab nzTitle="Preguntas">Hola !</nz-tab>
         <nz-tab nzTitle="Respuestas">Content of Tab Pane 2</nz-tab>
