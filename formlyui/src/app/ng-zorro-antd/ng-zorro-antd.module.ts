@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { NgZorroAntdRoutingModule } from './ng-zorro-antd-routing.module';
 import { SharedModule } from '../shared/shared.module';
@@ -30,6 +31,10 @@ import { HeaderComponent } from './wrappers/header/header.component';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { IconsProviderModule } from '../icons-provider.module';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
+import { ContainerComponent } from './wrappers/container/container.component';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { DragAndDropComponent } from './components/drag-and-drop/drag-and-drop.component';
+import { RepeatComponent } from './components/repeat/repeat.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +42,10 @@ import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
     SliderComponent,
     FormArrayComponent,
     SectionComponent,
-    HeaderComponent
+    HeaderComponent,
+    ContainerComponent,
+    DragAndDropComponent,
+    RepeatComponent
   ],
   imports: [
     NgZorroAntdRoutingModule,
@@ -51,52 +59,50 @@ import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
       ],
       wrappers: [
         { name: 'header', component: HeaderComponent },
+        { name: 'container', component: ContainerComponent },
       ],
       types: [
         { name: 'slider', component: SliderComponent, wrappers: ['form-field'] },
         { name: 'formarray', component: FormArrayComponent, wrappers: ['form-field'] },
         { name: 'section', component: SectionComponent, wrappers: ['form-field'] },
+        { name: 'repeat', component: RepeatComponent },
         { 
-          name: 'section', 
-          component: SectionComponent, 
-          wrappers: ['form-field'],
-        },
-        { 
-          name: 'header',
-          extends: 'formly-group',
-          wrappers: ['header'],
-          defaultOptions: {
-            fieldGroupClassName: 'row',
-            templateOptions: {
-              label: 'hola'
-            },
-            fieldGroup: [
-              {
-                type: 'input', key: 'name',
-                templateOptions: { required: true },
-                className: 'col-6',
-                validation: {
-                  messages: {
-                    required: 'required',
-                  },
-                }, 
-              },
-              { 
-                type: 'select',
-                key: 'profession',
-                className: 'col-6',
-                templateOptions: {
-                  required: true,
-                  options: [
-                    { label: 1, value: 1 },
-                    { label: 2, value: 2 },
-                    { label: 3, value: 3 },
-                    { label: 4, value: 4 },
-                  ]
-                }
-              },
-            ]
-          }
+          name: 'drag-drop',
+          // extends: 'formly-group',
+          // wrappers: ['container'],
+          component: DragAndDropComponent,
+          // defaultOptions: {
+          //   fieldGroupClassName: 'row',
+          //   templateOptions: {
+          //     label: 'hola'
+          //   },
+          //   fieldGroup: [
+          //     {
+          //       type: 'input', key: 'name',
+          //       templateOptions: { required: true },
+          //       className: 'col-6',
+          //       validation: {
+          //         messages: {
+          //           required: 'required',
+          //         },
+          //       }, 
+          //     },
+          //     { 
+          //       type: 'select',
+          //       key: 'profession',
+          //       className: 'col-6',
+          //       templateOptions: {
+          //         required: true,
+          //         options: [
+          //           { label: 1, value: 1 },
+          //           { label: 2, value: 2 },
+          //           { label: 3, value: 3 },
+          //           { label: 4, value: 4 },
+          //         ]
+          //       }
+          //     },
+          //   ]
+          // }
         },
       ],
     }),
@@ -106,6 +112,7 @@ import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
     NzSpaceModule,
     NzSliderModule,
     NzDatePickerModule,
+    NzSelectModule,
     NzInputModule,
     NzToolTipModule,
     IconsProviderModule,
@@ -118,6 +125,7 @@ import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
     FormlyNzRadioModule,
     FormlyNzSelectModule,
     FormlyNzTextAreaModule,
+    DragDropModule
   ]
 })
 export class NgZorroAntdModule { }
