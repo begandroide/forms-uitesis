@@ -17,33 +17,43 @@ export class NgZorroAntdComponent implements OnInit {
   options: FormlyFormOptions = {
     formState: {
       awesomeIsForced: false,
+      focusedIndex: 0
     }
   };
   fields: FormlyFieldConfig[] = [
     {
       key: 'questions',
       type: 'repeat',
+      // expressionProperties: {
+      //   focus: 'console.log(field) && field.parent.key === questions'
+      // },
       fieldArray: {
         wrappers: ['container'],
         fieldGroupClassName: 'row',
+        // focus: true,
         templateOptions: {
           label: 'hola',
           btnText: 'Add another investment',
         },
+        focus: true,
+        // hooks: {
+        //   onInit: (field) => {
+        //     window.scrollTo;
+        //   }
+        // },
         fieldGroup: [
           {
-            // hooks: {
-            //   onInit: (field) => {
-            //     field?.formControl?.reset();
-            //   }
-            // },
             defaultValue: '',
             className: 'col-sm-4',
             type: 'input',
             key: 'name',
+            expressionProperties: {
+              focus: 'field.parent.key == formState.focusedIndex',
+              blur: 'field.parent.key != formState.focusedIndex'
+            },
             templateOptions: {
               label: 'Name of Investment:',
-              required: true,
+              // required: true,
             },
           },
         ],
@@ -101,12 +111,12 @@ export class NgZorroAntdComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.dynamicFormsService.onUpdateFields.subscribe((model) => {
-      console.log(model);
-      // this.fields = {
-      //   ...this.fields,
-
-      // }
+    this.dynamicFormsService.onAddField.subscribe((index) => {
+      console.log(index);
+      this.options.formState.focusedIndex = index;
+    });
+    this.dynamicFormsService.onDeleteField.subscribe((index) => {
+      this.options.formState.focusedIndex = index - 1;
     });
     // setTimeout(()=>{
     //   this.fields = [

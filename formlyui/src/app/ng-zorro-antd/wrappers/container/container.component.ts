@@ -30,7 +30,7 @@ export class ContainerComponent extends FieldWrapper implements OnInit {
   }
 
   public addQuestion(): void {
-    this.dynamicFormService.addField(this.indexFieldGroup);
+    this.dynamicFormService.addField(this.indexFieldGroup + 1);
   }
 
   public removeQuestion() {

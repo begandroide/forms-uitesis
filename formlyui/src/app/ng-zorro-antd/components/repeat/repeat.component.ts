@@ -10,15 +10,6 @@ import { DynamicFormsService } from '../../services/dynamic-forms.service';
   selector: 'app-repeat',
   templateUrl: './repeat.component.html',
   styleUrls: ['./repeat.component.scss'],
-  animations: [trigger('fade', [      
-    transition('void => *', [
-      style({opacity: 0}),
-      animate(1000, style({opacity: 1}))
-    ]),
-    transition('* => void', [
-      animate(1000, style({opacity: 0}))
-    ])
-  ])]
 })
 export class RepeatComponent extends FieldArrayType implements OnInit {
   constructor(private dynamicFormService: DynamicFormsService) {
@@ -29,6 +20,7 @@ export class RepeatComponent extends FieldArrayType implements OnInit {
     this.dynamicFormService.onAddField.subscribe((index) => {
       if (index >= 0) {
         this.addAtIndex(index ?? 0);
+        // this.formState.focusedIndex = index + 1;
       }
     });
     this.dynamicFormService.onDeleteField.subscribe((index) => {
@@ -38,8 +30,13 @@ export class RepeatComponent extends FieldArrayType implements OnInit {
     });
   }
 
-  addAtIndex(index: number) {
-    this.add((index) + 1, undefined,  {markAsDirty: false});
+  addAtIndex(index?: number) {
+    if (index) {
+      this.add((index!), undefined,  {markAsDirty: false});
+    } else {
+      this.formState.focusedIndex = this.field.model?.length;
+      this.add();
+    }
   }
 
   moveUp(i: number) {
