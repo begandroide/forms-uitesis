@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SkeletonComponent } from './skeleton.component';
 import { SharedModule } from '../../shared/shared.module';
 import { HeaderActionBarModule } from '../header-action-bar/header-action-bar.module';
+import { FuseSidebarModule } from '../sidebar/sidebar.module';
 
 
 
@@ -16,7 +17,8 @@ import { HeaderActionBarModule } from '../header-action-bar/header-action-bar.mo
   imports: [
     CommonModule,
     SharedModule,
-    HeaderActionBarModule
+    HeaderActionBarModule,
+    FuseSidebarModule
   ]
 })
 export class SkeletonModule { }

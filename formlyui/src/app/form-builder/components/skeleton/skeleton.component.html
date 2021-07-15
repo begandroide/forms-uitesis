@@ -1,30 +1,65 @@
-<app-header-action-bar></app-header-action-bar>
+<div class="h-full flex flex-col">
 
-<div class="content accent" role="main">
-    <nz-tabset nzCentered>
-        <nz-tab nzTitle="Prueba">
-            "Buena"!
-            <!-- <form nz-form [nzLayout]="'vertical'" [formGroup]="form">
-                <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
-                <nz-space nzSize="middle" [nzSplit]="sep">
-                    <button *nzSpaceItem nz-button nzType="primary" type="submit">
-                        Submit
-                    </button>
-                    <button *nzSpaceItem nz-button nzType="primary" nzDanger type="reset">
-                        Reset
-                    </button>
-                </nz-space>
-            </form>
-        
-            <span>
-                {{ form.value | json}}
-            </span> -->
-        </nz-tab>
-        <nz-tab nzTitle="Preguntas">Hola !</nz-tab>
-        <nz-tab nzTitle="Respuestas">Content of Tab Pane 2</nz-tab>
-    </nz-tabset>
-</div>
+    <app-header-action-bar class="flex-none"></app-header-action-bar>
+    
+    <div class="flex-auto content accent relative" role="main">
+        <ng-template [ngTemplateOutlet]="addImage"></ng-template>
+        <ng-template [ngTemplateOutlet]="colors"></ng-template>
+        <ng-template [ngTemplateOutlet]="settings"></ng-template>
+        <fuse-sidebar class="bg-white" [name]="'one'" [position]="'right'" style="margin: 46px -32px -32px 0px;">
+            <span class="text-xl">hola</span>
+        </fuse-sidebar>
+        <nz-tabset>
+            <nz-tab nzTitle="Prueba">
+                "Buena"!
+                <!-- <form nz-form [nzLayout]="'vertical'" [formGroup]="form">
+                    <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
+                    <nz-space nzSize="middle" [nzSplit]="sep">
+                        <button *nzSpaceItem nz-button nzType="primary" type="submit">
+                            Submit
+                        </button>
+                        <button *nzSpaceItem nz-button nzType="primary" nzDanger type="reset">
+                            Reset
+                        </button>
+                    </nz-space>
+                </form>
+            
+                <span>
+                    {{ form.value | json}}
+                </span> -->
+            </nz-tab>
+            <nz-tab nzTitle="Preguntas">Hola !</nz-tab>
+            <nz-tab nzTitle="Respuestas">Content of Tab Pane 2</nz-tab>
+        </nz-tabset>
+        <!-- <fuse-sidebar class="bg-white" [name]="'one'" [position]="'right'" style="margin: 46px -24px -24px 0px;">
+            <span class="text-xl">hola</span>
+        </fuse-sidebar> -->
+    
+    </div>
 
-<ng-template #sep>
-    Hi
+</div>    
+<!-- insertar imagen -->
+<ng-template #addImage>
+    <fuse-sidebar class="bg-white" [name]="'image'" [position]="'right'" style="margin: 46px -32px -32px 0px;">
+        <div class="p-2">
+            <span class="text-xl">Inserte una imagen</span>
+        </div>
+    </fuse-sidebar>
+</ng-template>
+
+<!--  -->
+<ng-template #colors>
+    <fuse-sidebar class="bg-white" [name]="'theme'" [position]="'right'" style="margin: 46px -32px -32px 0px;">
+        <div class="p-2">
+            <span class="text-xl">Elija un tema</span>
+        </div>
+    </fuse-sidebar>
+</ng-template>
+
+<ng-template #settings>
+    <fuse-sidebar class="bg-white" [name]="'setting'" [position]="'right'" style="margin: 46px -32px -32px 0px;">
+        <div class="p-2">
+            <span class="text-xl">Ajustes de encuesta</span>
+        </div>
+    </fuse-sidebar>
 </ng-template>
