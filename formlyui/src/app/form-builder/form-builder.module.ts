@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormBuilderRoutingModule } from './form-builder-routing.module';
 import { FormBuilderComponent } from './form-builder.component';
 import { SkeletonModule } from './components/';
+import { FuseSidebarModule } from './components/sidebar/sidebar.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { SkeletonModule } from './components/';
   imports: [
     CommonModule,
     FormBuilderRoutingModule,
-    SkeletonModule
+    SkeletonModule,
+    FuseSidebarModule
   ]
 })
 export class FormBuilderModule { }
