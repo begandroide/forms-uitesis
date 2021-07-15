@@ -1,11 +1,16 @@
-<div class="flex w-full items-end justify-end gap-4">
-    <button nz-button nzSize="large" [nz-tooltip]="'Añadir imagen de encabezado'" nzTooltipPlacement="top"  nzType="default" nzShape="circle" class="hover:shadow-2xl transition duration-300 hover:scale-110">
-        <i nz-icon [nzType]="'picture'" style="font-size: 1.3em;"></i>
-    </button>
-    <button nz-button nzSize="large" [nz-tooltip]="'Cambiar color del tema'" nzTooltipPlacement="top" nzType="default" nzShape="circle" class="hover:shadow-2xl transition duration-300 hover:scale-110">
-        <i nz-icon [nzType]="'bg-colors'" style="font-size: 1.3em;"></i>
-    </button>
-    <button nz-button nzSize="large" [nz-tooltip]="'Configuración de la encuesta'" nzTooltipPlacement="top" nzType="default" nzShape="circle" class="hover:shadow-2xl transition duration-300 hover:scale-110">
-        <i nz-icon [nzType]="'setting'" style="font-size: 1.3em;"></i>
-    </button>
+<div class="flex flex-row w-full gap-2">
+    <div class="flex-1 flex items-center justify-start ">
+        <h2 class="text-black dark:text-white" style="margin: 0px;">Generador de Encuestas</h2>
+    </div>
+    <div class="flex gap-4">
+        <button (click)="addImage()" nz-button nzSize="large" [nz-tooltip]="'Añadir imagen de encabezado'" nzTooltipPlacement="top"  nzType="default" nzShape="circle" class="hover:shadow-2xl transition duration-300 hover:scale-110">
+            <i nz-icon [nzType]="'picture'" style="font-size: 1.3em;"></i>
+        </button>
+        <button (click)="changeTheme()" nz-button nzSize="large" [nz-tooltip]="'Cambiar color del tema'" nzTooltipPlacement="top" nzType="default" nzShape="circle" class="hover:shadow-2xl transition duration-300 hover:scale-110">
+            <i nz-icon [nzType]="'bg-colors'" style="font-size: 1.3em;"></i>
+        </button>
+        <button (click)="openSettings()" nz-button nzSize="large" [nz-tooltip]="'Configuración de la encuesta'" nzTooltipPlacement="top" nzType="default" nzShape="circle" class="hover:shadow-2xl transition duration-300 hover:scale-110">
+            <i nz-icon [nzType]="'setting'" style="font-size: 1.3em;"></i>
+        </button>
+    </div>
 </div>
