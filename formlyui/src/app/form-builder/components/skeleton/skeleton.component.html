@@ -1,1 +1,30 @@
-<p>skeleton works!</p>
+<app-header-action-bar></app-header-action-bar>
+
+<div class="content accent" role="main">
+    <nz-tabset nzCentered>
+        <nz-tab nzTitle="Prueba">
+            "Buena"!
+            <!-- <form nz-form [nzLayout]="'vertical'" [formGroup]="form">
+                <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
+                <nz-space nzSize="middle" [nzSplit]="sep">
+                    <button *nzSpaceItem nz-button nzType="primary" type="submit">
+                        Submit
+                    </button>
+                    <button *nzSpaceItem nz-button nzType="primary" nzDanger type="reset">
+                        Reset
+                    </button>
+                </nz-space>
+            </form>
+        
+            <span>
+                {{ form.value | json}}
+            </span> -->
+        </nz-tab>
+        <nz-tab nzTitle="Preguntas">Hola !</nz-tab>
+        <nz-tab nzTitle="Respuestas">Content of Tab Pane 2</nz-tab>
+    </nz-tabset>
+</div>
+
+<ng-template #sep>
+    Hi
+</ng-template>
