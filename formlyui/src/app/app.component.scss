@@ -61,21 +61,17 @@ nz-header {
   z-index: 2;
 }
 
-// .app-header {
-//   position: relative;
-//   height: 64px;
-//   padding: 0;
-//   background: #fff;
-//   box-shadow: 0 1px 4px rgba(0,21,41,.08);
-// }
-
 nz-content {
   margin: 24px;
 }
 
 .inner-content {
-  padding: 24px;
-  background: #fff;
   height: 100%;
   overflow: auto;
 }
+
+.inner-content-transparency {
+  height: 100%;
+  overflow: auto;
+}
+

@@ -11,6 +11,10 @@ const routes: Routes = [
   {
     path: 'antd',
     loadChildren: () => import('./ng-zorro-antd/ng-zorro-antd.module').then(m => m.NgZorroAntdModule)
+  },
+  {
+    path: 'form-builder',
+    loadChildren: () => import('./form-builder/form-builder.module').then(m => m.FormBuilderModule)
   }
 ];
 

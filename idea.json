@@ -1,0 +1,27 @@
+[
+    {
+        "type": "formarray",
+        "key": "survey",
+        "className": "",
+        "fieldArray": {
+            "key": "section1",
+            "className": "",
+            "fieldGroup": [
+
+            ]
+        }
+    },
+    {
+        "cover": "url",
+        "sections": [
+            {
+                "id": "section1",
+                "childs": [
+                    {
+                        
+                    }
+                ]
+            }
+        ]
+    }
+]
