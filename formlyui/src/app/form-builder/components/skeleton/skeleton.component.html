@@ -1,46 +1,23 @@
-<div class="h-full flex flex-col">
+<div class="h-full flex flex-col gap-4">
 
-    <app-header-action-bar class="flex-none"></app-header-action-bar>
+    <app-header-action-bar class="flex-none bg-white p-2 rounded-lg shadow-md"></app-header-action-bar>
     
-    <div class="flex-auto content accent relative" role="main">
+    <div class="flex-auto content accent relative bg-white rounded-lg shadow-md p-4" role="main">
         <ng-template [ngTemplateOutlet]="addImage"></ng-template>
         <ng-template [ngTemplateOutlet]="colors"></ng-template>
         <ng-template [ngTemplateOutlet]="settings"></ng-template>
-        <fuse-sidebar class="bg-white" [name]="'one'" [position]="'right'" style="margin: 46px -32px -32px 0px;">
-            <span class="text-xl">hola</span>
-        </fuse-sidebar>
-        <nz-tabset>
-            <nz-tab nzTitle="Prueba">
-                "Buena"!
-                <!-- <form nz-form [nzLayout]="'vertical'" [formGroup]="form">
-                    <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
-                    <nz-space nzSize="middle" [nzSplit]="sep">
-                        <button *nzSpaceItem nz-button nzType="primary" type="submit">
-                            Submit
-                        </button>
-                        <button *nzSpaceItem nz-button nzType="primary" nzDanger type="reset">
-                            Reset
-                        </button>
-                    </nz-space>
-                </form>
-            
-                <span>
-                    {{ form.value | json}}
-                </span> -->
-            </nz-tab>
-            <nz-tab nzTitle="Preguntas">Hola !</nz-tab>
+        <nz-tabset nzSize="large" nzCentered>
+            <nz-tab nzTitle="Prueba">"Buena"!</nz-tab>
+            <nz-tab nzTitle="Preguntas">Hola!</nz-tab>
             <nz-tab nzTitle="Respuestas">Content of Tab Pane 2</nz-tab>
         </nz-tabset>
-        <!-- <fuse-sidebar class="bg-white" [name]="'one'" [position]="'right'" style="margin: 46px -24px -24px 0px;">
-            <span class="text-xl">hola</span>
-        </fuse-sidebar> -->
     
     </div>
 
 </div>    
 <!-- insertar imagen -->
 <ng-template #addImage>
-    <fuse-sidebar class="bg-white" [name]="'image'" [position]="'right'" style="margin: 46px -32px -32px 0px;">
+    <fuse-sidebar class="bg-white rounded-tl-lg" [name]="'image'" [position]="'right'">
         <div class="p-2">
             <span class="text-xl">Inserte una imagen</span>
         </div>
@@ -49,7 +26,7 @@
 
 <!--  -->
 <ng-template #colors>
-    <fuse-sidebar class="bg-white" [name]="'theme'" [position]="'right'" style="margin: 46px -32px -32px 0px;">
+    <fuse-sidebar class="bg-white rounded-tl-lg" [name]="'theme'" [position]="'right'">
         <div class="p-2">
             <span class="text-xl">Elija un tema</span>
         </div>
@@ -57,7 +34,7 @@
 </ng-template>
 
 <ng-template #settings>
-    <fuse-sidebar class="bg-white" [name]="'setting'" [position]="'right'" style="margin: 46px -32px -32px 0px;">
+    <fuse-sidebar class="bg-white rounded-tl-lg" [name]="'setting'" [position]="'right'">
         <div class="p-2">
             <span class="text-xl">Ajustes de encuesta</span>
         </div>
