@@ -1,6 +1,6 @@
 
 fuse-sidebar {
-    display: flex;
+    display: none;
     flex-direction: column;
     flex: 1 0 auto;
     position: absolute;
@@ -15,12 +15,11 @@ fuse-sidebar {
     z-index: 1000;
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.35);
 
-    // @include media-breakpoint('xs') {
-    //     min-width: 0 !important;
-    //     max-width: 80vw !important;
-    //     width: 80vw !important;
-    // }
-
+    @media only screen and (max-width: 600px) {
+        min-width: 0 !important;
+        max-width: 80% !important;
+        width: 80% !important;
+    }
 
     &.left-positioned {
         left: 0;
@@ -33,6 +32,7 @@ fuse-sidebar {
     }
 
     &.open {
+        display: flex;
         transform: translateX(0);
     }
 

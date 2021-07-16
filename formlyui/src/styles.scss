@@ -19,3 +19,19 @@ $typography: mat-typography-config(
 
 // Setup the typography
 @include angular-material-typography($typography);
+
+
+app-root {
+    nz-layout {
+        nz-content {
+            .inner-nocolor {
+                height: 100%;
+            }
+            .inner-white {
+                height: 100%;
+                background-color: #fff;
+                padding: 24px;
+            }
+        }
+    }
+}
