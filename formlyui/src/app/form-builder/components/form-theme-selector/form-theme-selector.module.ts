@@ -7,6 +7,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { ColorCircleModule } from 'ngx-color/circle'; // <color-circle></color-circle>
 import { NzRadioModule } from 'ng-zorro-antd/radio';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ThemePickerModule } from 'src/app/theme-picker/theme-picker.module';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NzButtonModule,
     ColorCircleModule,
     FormsModule,
-    NzRadioModule
+    NzRadioModule,
+    ThemePickerModule.forRoot() // revisar esto
   ]
 })
 export class FormThemeSelectorModule { }
