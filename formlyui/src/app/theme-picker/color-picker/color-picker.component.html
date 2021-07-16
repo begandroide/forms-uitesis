@@ -1,0 +1,14 @@
+
+<div class="grid grid-cols-6 gap-4">
+    <div 
+        [ngClass]="{'scale-125 shadow-sm': color.selected, 'hover:-translate-1 hover:scale-125 hover:shadow-sm': !color.selected}"
+        class="col-span-1 flex justify-center rounded-full transition duration-100 ease-in-out transform m-1 h-6 w-6 hover:cursor-pointer"
+        *ngFor="let color of colors" [ngStyle]="{'background-color': color.color}"
+        [nz-tooltip]="color.color"
+        [nzTooltipPlacement]="['topLeft', 'topRight']"
+        >
+        <div *ngIf="color.selected">
+            <i nz-icon nzType="check" class="text-white text-sm"></i>
+        </div>
+    </div>
+</div>
