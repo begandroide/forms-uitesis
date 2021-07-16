@@ -4,6 +4,7 @@ import { ColorCircleModule } from 'ngx-color/circle';
 import { ColorPickerComponent, VariantPickerComponent, ThemePickerService } from '.';
 import { IconsProviderModule } from '../icons-provider.module';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
+import { NzButtonModule } from 'ng-zorro-antd/button';
 
 
 
@@ -19,6 +20,7 @@ import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
   imports: [
     CommonModule,
     NzToolTipModule,
+    NzButtonModule,
     ColorCircleModule,
     IconsProviderModule
   ]
