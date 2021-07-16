@@ -19,7 +19,7 @@
 <ng-template #addImage>
     <fuse-sidebar class="bg-white rounded-tl-lg" [name]="'image'" [position]="'right'">
         <div class="p-2">
-            <span class="text-xl">Inserte una imagen</span>
+            <span class="text-xl">En creación</span>
         </div>
     </fuse-sidebar>
 </ng-template>
@@ -27,9 +27,7 @@
 <!--  -->
 <ng-template #colors>
     <fuse-sidebar class="bg-white rounded-tl-lg" [name]="'theme'" [position]="'right'">
-        <div class="p-2">
-            <span class="text-xl">Elija un tema</span>
-        </div>
+        <app-form-theme-selector class="h-full"></app-form-theme-selector>
     </fuse-sidebar>
 </ng-template>
 
