@@ -13,4 +13,17 @@
             <!-- stroke-width: 3rem; stroke: currentColor; -->
         </div>
     </div>
+    <button 
+        class="col-span-1 transition duration-100 ease-in-out transform m-1"
+        nz-button
+        nzSize="small"
+        [nz-tooltip]="'Cerrar'"
+        [nz-tooltip]="'Añadir un color personalizado'"
+        [nzTooltipPlacement]="['topLeft', 'topRight']"
+        nzType="text"
+        nzShape="circle"
+        (click)="changeToColorpickerMode()"
+        >
+        <i nz-icon nzType="plus-circle" nzTheme="twotone" [nzTwotoneColor]="'#bababa'" class="hover:-translate-1 hover:scale-125 hover:shadow-sm" style="font-size: 1.7em;"></i>
+    </button>
 </div>

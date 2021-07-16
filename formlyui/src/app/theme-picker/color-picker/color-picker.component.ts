@@ -1,13 +1,8 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { generate, presetPalettes } from '@ant-design/colors';
+import { Colors, DefaultColor } from '..';
 
-const Colors = [
-  "#000000", "#f44336", "#e91e63", "#9c27b0", "#673ab7", "#3f51b5", "#2196f3", "#03a9f4",
-  "#00bcd4", "#009688", "#4caf50", "#8bc34a", "#cddc39", "#ffeb3b", "#ffc107", "#ff9800",
-  "#ff5722", "#795548",
-];
 
-const DefaultColor = '#000000';
 
 @Component({
   selector: 'app-color-picker',
@@ -39,7 +34,11 @@ export class ColorPickerComponent implements OnInit {
   }
   
   private generateColors(hex?: string) {
-    this.generatedColors = generate(hex ?? DefaultColor);
+    this.generatedColors = generate(hex ?? DefaultColor).slice(0, 5);
     this.generatedColorsChange.emit(this.generatedColors);
+  }
+
+  changeToColorpickerMode() {
+    
   }
 }
