@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { generate, presetPalettes } from '@ant-design/colors';
+import { ColorEvent } from 'ngx-color';
 import { Colors, DefaultColor } from '..';
+import { ColorpickerMode } from '../const';
 
 
 
@@ -11,12 +13,14 @@ import { Colors, DefaultColor } from '..';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ColorPickerComponent implements OnInit {
+  readonly Modes = ColorpickerMode;
   @Input() selectedColor: string = DefaultColor;
   @Output() generatedColorsChange: EventEmitter<string[]>;
   
   colors = Colors;
   generatedColors: string[] = [];
   selectedIndex = 0;
+  currentMode: ColorpickerMode = this.Modes.Swatches;
 
   constructor() { 
     this.generatedColorsChange = new EventEmitter();
@@ -38,7 +42,15 @@ export class ColorPickerComponent implements OnInit {
     this.generatedColorsChange.emit(this.generatedColors);
   }
 
-  changeToColorpickerMode() {
-    
+  toggleColorpickerMode() {
+    if (this.currentMode === this.Modes.Swatches) {
+      this.currentMode = this.Modes.Sketch;
+    } else {
+      this.currentMode = this.Modes.Swatches;
+    }
+  }
+
+  onSketchColorChange(event: ColorEvent) {
+
   }
 }

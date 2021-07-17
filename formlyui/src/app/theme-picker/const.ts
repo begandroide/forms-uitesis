@@ -5,3 +5,8 @@ export const Colors = [
   ];
   
 export const DefaultColor = '#949494';
+
+export enum ColorpickerMode {
+    Swatches,
+    Sketch
+}
