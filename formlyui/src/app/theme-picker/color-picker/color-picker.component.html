@@ -1,0 +1,32 @@
+<div class="grid grid-cols-6 gap-0.5 items-center justify-items-center" [ngClass]="{'hidden': currentMode === Modes.Sketch}">
+    <div 
+        [ngClass]="{'scale-125 shadow-sm': i === selectedIndex, 'hover:-translate-1 hover:scale-125 hover:shadow-sm': i !== selectedIndex}"
+        class="col-span-1 flex justify-center rounded-full transition duration-100 ease-in-out transform m-1 h-6 w-6 hover:cursor-pointer"
+        *ngFor="let color of colors; let i = index;" [ngStyle]="{'background-color': color}"
+        [nz-tooltip]="color"
+        [nzTooltipPlacement]="['topLeft', 'topRight']"
+        (click)="changeToColor(i)"
+        >
+        <div *ngIf="i === selectedIndex">
+            <i nz-icon nzType="check" class="text-white text-sm"></i>
+            <!-- stroke-width: 3rem; stroke: currentColor; -->
+        </div>
+    </div>
+    <button 
+        class="col-span-1 transition duration-100 ease-in-out transform m-1"
+        nz-button
+        nzSize="small"
+        [nz-tooltip]="'Cerrar'"
+        [nz-tooltip]="'Añadir un color personalizado'"
+        [nzTooltipPlacement]="['topLeft', 'topRight']"
+        nzType="text"
+        nzShape="circle"
+        (click)="toggleColorpickerMode()"
+        >
+        <i nz-icon nzType="plus-circle" nzTheme="twotone" [nzTwotoneColor]="'#bababa'" class="hover:-translate-1 hover:scale-125 hover:shadow-sm" style="font-size: 1.7em;"></i>
+    </button>
+</div>
+
+<div *ngIf="currentMode === Modes.Sketch" class="transition duration-150 ease-in-out m-4 w-full">
+    <app-sketch-picker (sketchColorChange)="onSketchColorChange($event)"></app-sketch-picker>
+</div>

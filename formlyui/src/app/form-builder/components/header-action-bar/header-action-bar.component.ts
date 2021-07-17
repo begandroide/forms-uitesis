@@ -1,6 +1,8 @@
-import { ChangeDetectionStrategy, Component, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FuseSidebarComponent } from '../sidebar/sidebar.component';
 import { FuseSidebarService } from '../sidebar/sidebar.service';
+
+export type ActiveButton = 'Image' | 'Theme' | 'Setting' | undefined;
 
 @Component({
   selector: 'app-header-action-bar',
@@ -10,6 +12,9 @@ import { FuseSidebarService } from '../sidebar/sidebar.service';
   encapsulation: ViewEncapsulation.None
 })
 export class HeaderActionBarComponent implements OnInit {
+
+  activeButton: ActiveButton = undefined;
+
   constructor(
     private sidebarService: FuseSidebarService
   ) { }
@@ -25,8 +30,13 @@ export class HeaderActionBarComponent implements OnInit {
     if (this.getSidebar('setting')?.opened) {
       this.getSidebar('setting')?.toggleOpen();
     }
-    
-    this.getSidebar('image')?.toggleOpen();
+    const sidebar = this.getSidebar('image');
+    sidebar?.toggleOpen();
+    if (sidebar?.opened) {
+      this.activeButton = 'Image';
+    } else {
+      this.activeButton = undefined;
+    }
   }
 
   changeTheme() {
@@ -38,7 +48,13 @@ export class HeaderActionBarComponent implements OnInit {
       this.getSidebar('setting')?.toggleOpen();
     }
     
-    this.getSidebar('theme')?.toggleOpen();
+    const sidebar = this.getSidebar('theme');
+    sidebar?.toggleOpen();
+    if (sidebar?.opened) {
+      this.activeButton = 'Theme';
+    } else {
+      this.activeButton = undefined;
+    }
   }
 
   openSettings() {
@@ -51,7 +67,13 @@ export class HeaderActionBarComponent implements OnInit {
       this.getSidebar('theme')?.toggleOpen();
     }
 
-    this.getSidebar('setting')?.toggleOpen();
+    const sidebar = this.getSidebar('setting');
+    sidebar?.toggleOpen();
+    if (sidebar?.opened) {
+      this.activeButton = 'Setting';
+    } else {
+      this.activeButton = undefined;
+    }
   }
 
   private getSidebar(key: string): FuseSidebarComponent | undefined{

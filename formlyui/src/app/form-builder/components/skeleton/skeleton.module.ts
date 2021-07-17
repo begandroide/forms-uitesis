@@ -4,6 +4,7 @@ import { SkeletonComponent } from './skeleton.component';
 import { SharedModule } from '../../shared/shared.module';
 import { HeaderActionBarModule } from '../header-action-bar/header-action-bar.module';
 import { FuseSidebarModule } from '../sidebar/sidebar.module';
+import { FormThemeSelectorModule } from '../form-theme-selector/form-theme-selector.module';
 
 
 
@@ -18,7 +19,8 @@ import { FuseSidebarModule } from '../sidebar/sidebar.module';
     CommonModule,
     SharedModule,
     HeaderActionBarModule,
-    FuseSidebarModule
+    FuseSidebarModule,
+    FormThemeSelectorModule
   ]
 })
 export class SkeletonModule { }
