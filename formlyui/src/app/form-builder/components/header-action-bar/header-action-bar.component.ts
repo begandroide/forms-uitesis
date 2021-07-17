@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FuseSidebarComponent } from '../sidebar/sidebar.component';
 import { FuseSidebarService } from '../sidebar/sidebar.service';
 
