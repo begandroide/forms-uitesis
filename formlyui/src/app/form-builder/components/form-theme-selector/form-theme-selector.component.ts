@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FuseSidebarService } from '../sidebar/sidebar.service';
 @Component({
   selector: 'app-form-theme-selector',
@@ -7,7 +7,6 @@ import { FuseSidebarService } from '../sidebar/sidebar.service';
   encapsulation: ViewEncapsulation.None
 })
 export class FormThemeSelectorComponent implements OnInit {
-  variants: string[] = [];
 
   constructor(private sidebarService: FuseSidebarService) { }
 
@@ -16,10 +15,6 @@ export class FormThemeSelectorComponent implements OnInit {
 
   closePanel(): void {
     this.sidebarService.getSidebar('theme')?.close();
-  }
-
-  onGeneratedColorsChange(event: string[]) {
-    this.variants = event;
   }
 
 }

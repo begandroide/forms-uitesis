@@ -16,6 +16,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { IconsProviderModule } from './icons-provider.module';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
+import { NgxsModule } from '@ngxs/store';
+import { environment } from 'src/environments/environment';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { FormThemeState } from 'src/store/form-theme/form-theme.state';
 
 registerLocaleData(es);
 
@@ -33,6 +37,10 @@ registerLocaleData(es);
     FormlyModule.forRoot({ extras: { lazyRender: true }, validationMessages: [
       { name: 'required', message: 'This field is required' },
     ]}),
+    NgxsModule.forRoot([FormThemeState], {
+      developmentMode: !environment.production
+    }),
+    NgxsReduxDevtoolsPluginModule.forRoot(),
     FormsModule,
     HttpClientModule,
     IconsProviderModule,
