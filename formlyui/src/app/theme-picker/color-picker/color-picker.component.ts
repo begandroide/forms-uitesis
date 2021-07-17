@@ -50,7 +50,21 @@ export class ColorPickerComponent implements OnInit {
     }
   }
 
-  onSketchColorChange(event: ColorEvent) {
+  onSketchColorChange(event: string | null) {
+    if (event !== null) {
+      const index = this.colors.findIndex((p) => p === event);
+      if (index === -1) { // not found
+        this.colors.push(event);
+        this.generateColors(event);
+        this.selectedColor = event;
+        this.selectedIndex = this.colors.length - 1;
+      } else {
+        this.generateColors(event);
+        this.selectedColor = event;
+        this.selectedIndex = index;
+      }
+    }
 
+    this.toggleColorpickerMode();
   }
 }

@@ -7,6 +7,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzPopoverModule } from 'ng-zorro-antd/popover';
 import { SketchPickerComponent } from './sketch-picker/sketch-picker.component';
 import { ColorSketchModule } from 'ngx-color/sketch';
+import { ColorChromeModule } from 'ngx-color/chrome';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { ColorSketchModule } from 'ngx-color/sketch';
     NzButtonModule,
     NzPopoverModule,
     ColorSketchModule,
+    ColorChromeModule,
     IconsProviderModule
   ]
 })

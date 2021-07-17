@@ -1,4 +1,4 @@
-<div class="grid grid-cols-6 gap-0.5 items-center justify-items-center">
+<div class="grid grid-cols-6 gap-0.5 items-center justify-items-center" [ngClass]="{'hidden': currentMode === Modes.Sketch}">
     <div 
         [ngClass]="{'scale-125 shadow-sm': i === selectedIndex, 'hover:-translate-1 hover:scale-125 hover:shadow-sm': i !== selectedIndex}"
         class="col-span-1 flex justify-center rounded-full transition duration-100 ease-in-out transform m-1 h-6 w-6 hover:cursor-pointer"
@@ -21,14 +21,12 @@
         [nzTooltipPlacement]="['topLeft', 'topRight']"
         nzType="text"
         nzShape="circle"
-        nz-popover
-        nzPopoverPlacement="left"
-        nzPopoverTitle="Title" [nzPopoverContent]="contentTemplate" nzPopoverTrigger="focus"
+        (click)="toggleColorpickerMode()"
         >
-        <!-- (click)="toggleColorpickerMode()" -->
         <i nz-icon nzType="plus-circle" nzTheme="twotone" [nzTwotoneColor]="'#bababa'" class="hover:-translate-1 hover:scale-125 hover:shadow-sm" style="font-size: 1.7em;"></i>
     </button>
 </div>
-<ng-template #contentTemplate>
+
+<div *ngIf="currentMode === Modes.Sketch" class="transition duration-150 ease-in-out m-4 w-full">
     <app-sketch-picker (sketchColorChange)="onSketchColorChange($event)"></app-sketch-picker>
-</ng-template>
+</div>
