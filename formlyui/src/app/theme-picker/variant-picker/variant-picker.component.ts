@@ -21,7 +21,7 @@ export class VariantPickerComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.variants.length === 0) {
-      this.variants = generate(DefaultColor).slice(0, 5);
+      this.variants = generate(DefaultColor).slice(0, 4);
     }
     this.loadingVariants = false;
   }

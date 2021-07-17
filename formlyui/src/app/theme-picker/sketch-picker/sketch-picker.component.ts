@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
-import { ColorEvent } from 'ngx-color';
 
 @Component({
   selector: 'app-sketch-picker',

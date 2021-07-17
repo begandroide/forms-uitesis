@@ -8,23 +8,30 @@ import { NzPopoverModule } from 'ng-zorro-antd/popover';
 import { SketchPickerComponent } from './sketch-picker/sketch-picker.component';
 import { ColorSketchModule } from 'ngx-color/sketch';
 import { ColorChromeModule } from 'ngx-color/chrome';
+import { LikertPickerComponent } from './likert-picker/likert-picker.component';
+import { NzRadioModule } from 'ng-zorro-antd/radio';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     ColorPickerComponent,
     VariantPickerComponent,
-    SketchPickerComponent
+    SketchPickerComponent,
+    LikertPickerComponent
   ],
   exports: [
     ColorPickerComponent,
-    VariantPickerComponent
+    VariantPickerComponent,
+    LikertPickerComponent
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     NzToolTipModule,
     NzButtonModule,
     NzPopoverModule,
+    NzRadioModule,
     ColorSketchModule,
     ColorChromeModule,
     IconsProviderModule

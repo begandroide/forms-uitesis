@@ -38,7 +38,7 @@ export class ColorPickerComponent implements OnInit {
   }
   
   private generateColors(hex?: string) {
-    this.generatedColors = generate(hex ?? DefaultColor).slice(0, 5);
+    this.generatedColors = generate(hex ?? DefaultColor).slice(0, 4);
     this.generatedColorsChange.emit(this.generatedColors);
   }
 
