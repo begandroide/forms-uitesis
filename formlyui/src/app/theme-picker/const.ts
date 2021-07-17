@@ -6,6 +6,12 @@ export const Colors = [
   
 export const DefaultColor = '#949494';
 
+export class LikertOptions  {
+
+    static readonly Default = ["#4caf50", "#2196f3", '#ffeb3b', '#ff5722', '#e91e63' ];
+    static readonly Fancy   = ["#f44336", "#e91e63", "#9c27b0", "#673ab7", "#3f51b5"];
+}
+
 export enum ColorpickerMode {
     Swatches,
     Sketch

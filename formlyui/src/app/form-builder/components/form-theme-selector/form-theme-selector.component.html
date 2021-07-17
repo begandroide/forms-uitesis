@@ -34,9 +34,6 @@
         <div class="flex flex-col gap-1 px-4">
             <span class="uppercase tracking-wider text-xs">Color del fondo</span>
             <app-variant-picker [variants]="variants"></app-variant-picker>
-            <!-- <color-circle
-                [colors]='["#f44336", "#e91e63", "#9c27b0", "#673ab7", "#3f51b5"]'>
-            </color-circle> -->
         </div> 
     </div>
 
@@ -44,34 +41,7 @@
     <div class="border-b border-gray-200 py-6">
         <div class="flex flex-col gap-1 px-4">
             <span class="uppercase tracking-wider text-xs">Color gráficos <span class="italic">likert</span></span>
-            <nz-radio-group [(ngModel)]="radioValue" class="flex flex-col">
-                <label nz-radio nzValue="default">
-                    <color-circle
-                        [circleSize]="12"
-                        [circleSpacing]="8"
-                        [contentEditable]="false"
-                        (click)="$event.preventDefault();"
-                        [colors]='["#f44336", "#e91e63", "#9c27b0", "#673ab7", "#3f51b5"]'>
-                    </color-circle>
-                </label>
-                <label nz-radio nzValue="A">
-                    <color-circle
-                        [circleSize]="12"
-                        [circleSpacing]="8"
-                        [contentEditable]="false"
-                        
-                        [colors]='["#f44336", "#e91e63", "#9c27b0", "#673ab7", "#3f51b5"]'>
-                    </color-circle>
-                </label>
-                <label nz-radio nzValue="B">
-                    <color-circle
-                        [circleSize]="12"
-                        [circleSpacing]="8"
-                        [contentEditable]="false"
-                        [colors]='["#f44336", "#e91e63", "#9c27b0", "#673ab7", "#3f51b5"]'>
-                    </color-circle>
-                </label>
-              </nz-radio-group>
+            <app-likert-picker></app-likert-picker>
         </div> 
     </div>
 
