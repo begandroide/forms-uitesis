@@ -1,6 +1,6 @@
-# ngformly-uitesis
+# forms-uitesis
 
-[ngformly-uitesis page](https://begandroide.github.io/ngformly-uitesis)
+[forms-uitesis page](https://begandroide.github.io/forms-uitesis)
 
 En la necesidad de crear formularios "dinámicos" como los de Google Forms, se buscaron las distintas librerías disponibles para ello.
 
