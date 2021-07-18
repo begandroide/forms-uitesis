@@ -1,19 +1,19 @@
 
 <div class="grid grid-cols-6 gap-0.5 items-center justify-items-center">
+    <!-- 'animate-pulse': loadingVariants -->
     <div 
         [ngClass]="{
-            'scale-125 shadow-sm': i === selectedIndex,
-            'hover:-translate-1 hover:scale-125 hover:shadow-sm': i !== selectedIndex,
-            'animate-pulse': loadingVariants
+            'scale-125 shadow-sm': i === (selectedIndex$ | async),
+            'hover:-translate-1 hover:scale-125 hover:shadow-sm': i !== (selectedIndex$ | async)
         }"
         class="col-span-1 flex justify-center rounded-full transition duration-100 ease-in-out transform m-1 h-6 w-6 hover:cursor-pointer"
-        *ngFor="let color of variants; let i = index;" [ngStyle]="{'background-color': color}"
+        *ngFor="let color of (variants$ | async); let i = index;" [ngStyle]="{'background-color': color}"
         [nz-tooltip]="color"
         [nzTooltipPlacement]="['topLeft', 'topRight']"
         (click)="changeToVariant(i)"
         >
-        <div *ngIf="i === selectedIndex">
-            <i nz-icon nzType="check" class="text-white text-sm"></i>
+        <div *ngIf="i === (selectedIndex$ | async)">
+            <i nz-icon nzType="check" class="text-black text-sm"></i>
             <!-- stroke-width: 3rem; stroke: currentColor; -->
         </div>
     </div>
