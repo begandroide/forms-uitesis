@@ -1,6 +1,7 @@
 import { Component, ComponentFactoryResolver, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { FieldWrapper } from '@ngx-formly/core';
+import { FormControl, Validators } from '@angular/forms';
+import { FieldWrapper, FormlyFieldConfig } from '@ngx-formly/core';
+import { distinctUntilChanged } from 'rxjs/operators';
 import { SliderComponent } from '../../components/slider/slider.component';
 import { DynamicFormsService } from '../../services/dynamic-forms.service';
 
@@ -10,24 +11,59 @@ import { DynamicFormsService } from '../../services/dynamic-forms.service';
   styleUrls: ['./container.component.scss']
 })
 export class ContainerComponent extends FieldWrapper implements OnInit {
-  @ViewChild('fieldComponent', { read: ViewContainerRef }) dynamicContent!: ViewContainerRef;
-  selectorInputType = new FormControl();
+  @ViewChild('fieldComponent',   { read: ViewContainerRef }) dynamicContent!: ViewContainerRef;
+  @ViewChild('dynamicComponent', { read: ViewContainerRef }) dynamicField!  : ViewContainerRef;
+
+  selectorInputType = new FormControl({value: ''}, [Validators.required]);
 
   constructor(
-    private dynamicFormService: DynamicFormsService
+    private dynamicFormService: DynamicFormsService,
+    private componentFactoryResolver: ComponentFactoryResolver
   ) { 
     super();
   }
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.selectorInputType.valueChanges.pipe(distinctUntilChanged()).subscribe((value) => {
+      let model: FormlyFieldConfig = {};
+      switch (value) {
+        case 'input':
+          model = {
+            defaultValue: '',
+            className: 'col-sm-4',
+            type: 'input',
+            key: 'pregunta',
+            templateOptions: {
+              label: 'Título',
+              required: true,
+            },
+          };   
+          break;
+        case 'textarea':
+          model = {
+            defaultValue: '',
+            className: 'col-sm-4',
+            type: 'textarea',
+            key: 'pregunta',
+            templateOptions: {
+              label: 'Título',
+              required: true,
+            }
+          };
+          break;
+        case 'radios':
+          model = {
 
-  public changeComponent() {
-    // this.key
-    // this.dynamicContent.clear();
-    // // create the component factory  
-    // const dynamicComponentFactory = this.componentFactoryResolver.resolveComponentFactory(SliderComponent);  
-    // // add the component to the view  
-    // const componentRef = this.dynamicContent.createComponent(dynamicComponentFactory);  
-  }
+          };
+          break;
+        case 'checkbox':
+          model = {
+
+          };
+          break;
+      }
+      this.dynamicFormService.addSubfield(this.indexFieldGroup, model);
+    });
+   }
 
   public addQuestion(): void {
     this.dynamicFormService.addField(this.indexFieldGroup + 1);

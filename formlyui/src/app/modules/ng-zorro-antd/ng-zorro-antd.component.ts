@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
+import { filter } from 'rxjs/operators';
 import { DynamicFormsService } from './services/dynamic-forms.service';
 
 @Component({
@@ -73,24 +74,31 @@ export class NgZorroAntdComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.dynamicFormsService.onAddSubfield.pipe(filter(p => p.index !== -1)).subscribe(({index, field}) => {
+      this.fields[0].fieldGroup![index].fieldGroup = [
+        ...this.fields[0].fieldGroup![index].fieldGroup!,
+        field
+      ]
+      this.fields = [...this.fields];
+    });
     this.dynamicFormsService.onAddField.subscribe((index) => {
       console.log(index);
       console.log(this.model);
       this.options.formState.focusedIndex = index;
       setTimeout(() => {
-        console.log(this.model);
-        this.fields[0].fieldGroup![0].fieldGroup = [
-          ...this.fields[0].fieldGroup![0].fieldGroup!,
-          {
-            className: 'col-sm-4',
-            type: 'input',
-            key: 'investmentName',
-            templateOptions: {
-              label: 'Name of Investment:',
-              required: true,
-            },
-          }
-        ];
+        // console.log(this.model);
+        // this.fields[0].fieldGroup![0].fieldGroup = [
+        //   ...this.fields[0].fieldGroup![0].fieldGroup!,
+        //   {
+        //     className: 'col-sm-4',
+        //     type: 'input',
+        //     key: 'investmentName',
+        //     templateOptions: {
+        //       label: 'Name of Investment:',
+        //       required: true,
+        //     },
+        //   }
+        // ];
 
         // this.fields[0].fieldArray!.fieldGroup = 
         // [

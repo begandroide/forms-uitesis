@@ -1,4 +1,4 @@
-<div class="flex flex-row gap-2 transition duration-300 hover:scale-105">
+<div class="flex flex-row gap-2 transition duration-300">
     <div class="flex flex-auto rounded-lg border-gray-400 shadow-md">
         <div class="h-full w-min relative justify-start">
             <div class="px-1 h-full w-0.5 bg-green-400 rounded-l-lg"></div>
@@ -10,19 +10,30 @@
                     <ng-container #fieldComponent></ng-container>
                 </div>
                 <div class="flex-1">
-                    <nz-select class="w-full" nzPlaceHolder="Selecciona control" [formControl]="selectorInputType" (ngModelChange)="changeComponent()">
-                        <nz-option nzCustomContent nzLabel="Respuesta corta" nzValue="shortAnswer">
-                            <i nz-icon nzType="line"></i>
-                            Respuesta corta
-                        </nz-option>
-                        <nz-option nzCustomContent nzLabel="Párrafo" nzValue="paragraph">
-                            <i nz-icon nzType="line"></i>
-                            Párrafo
-                        </nz-option>
-                    </nz-select>
+                    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">E-mail</nz-form-label>
+                    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+                        <nz-select id="email" class="w-full" nzPlaceHolder="Selecciona control" nzRequired [formControl]="selectorInputType">
+                            <nz-option nzCustomContent nzLabel="Respuesta corta" nzValue="input">
+                                <i nz-icon nzType="line"></i>
+                                Respuesta corta
+                            </nz-option>
+                            <nz-option nzCustomContent nzLabel="Párrafo" nzValue="textarea">
+                                <i nz-icon nzType="line"></i>
+                                Párrafo
+                            </nz-option>
+                            <nz-option nzCustomContent nzLabel="Radios" nzValue="radios">
+                                <i nz-icon nzType="line"></i>
+                                Radios
+                            </nz-option>
+                            <nz-option nzCustomContent nzLabel="Checkbox" nzValue="checkbox">
+                                <i nz-icon nzType="line"></i>
+                                Checkbox
+                            </nz-option>
+                        </nz-select>
+                    </nz-form-control>
                 </div>
 
-                <ng-container #field></ng-container>
+                <ng-container #dynamicComponent></ng-container>
             </div>
             <div class="w-full flex flex-row gap-1">
                 <button nz-button (click)="removeQuestion()">
