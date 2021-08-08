@@ -55,7 +55,7 @@ import { RepeatComponent } from './components/repeat/repeat.component';
     ReactiveFormsModule,
     FormlyModule.forChild({
       extras: { lazyRender: true }, validationMessages: [
-        { name: 'required', message: 'This field is required' },
+        { name: 'required', message: 'Campo requerido' },
       ],
       wrappers: [
         { name: 'header', component: HeaderComponent },

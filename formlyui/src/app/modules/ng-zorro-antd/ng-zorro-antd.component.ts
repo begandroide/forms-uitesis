@@ -35,7 +35,7 @@ export class NgZorroAntdComponent implements OnInit {
           label: 'hola',
           btnText: 'Add another investment',
         },
-        focus: true,
+        focus: false,
         // hooks: {
         //   onInit: (field) => {
         //     window.scrollTo;
@@ -48,55 +48,17 @@ export class NgZorroAntdComponent implements OnInit {
             type: 'input',
             key: 'name',
             expressionProperties: {
-              focus: 'field.parent.key == formState.focusedIndex',
-              blur: 'field.parent.key != formState.focusedIndex'
+              // focus: 'field.parent.key == formState.focusedIndex',
+              // blur: 'field.parent.key != formState.focusedIndex'
             },
             templateOptions: {
-              label: 'Name of Investment:',
-              // required: true,
+              label: 'Título',
+              required: true,
             },
           },
         ],
       },
     },
-    {
-      key: 'investments',
-      type: 'formarray',
-      templateOptions: {
-        addText: 'Add another investment',
-      },
-      fieldArray: {
-        wrappers: ['container'],
-        fieldGroup: [
-          {
-            className: 'col-sm-4',
-            type: 'input',
-            key: 'investmentName',
-            templateOptions: {
-              label: 'Name of Investment:',
-              required: true,
-            },
-          },
-          {
-            type: 'input',
-            key: 'investmentDate',
-            className: 'col-sm-4',
-            templateOptions: {
-              type: 'date',
-              label: 'Date of Investment:',
-            },
-          },
-          {
-            type: 'input',
-            key: 'stockIdentifier',
-            className: 'col-sm-4',
-            templateOptions: {
-              label: 'Stock Identifier:',
-            },
-          },
-        ],
-      }
-    }
   ];
 
   constructor(
@@ -113,7 +75,52 @@ export class NgZorroAntdComponent implements OnInit {
   ngOnInit(): void {
     this.dynamicFormsService.onAddField.subscribe((index) => {
       console.log(index);
+      console.log(this.model);
       this.options.formState.focusedIndex = index;
+      setTimeout(() => {
+        console.log(this.model);
+        this.fields[0].fieldGroup![0].fieldGroup = [
+          ...this.fields[0].fieldGroup![0].fieldGroup!,
+          {
+            className: 'col-sm-4',
+            type: 'input',
+            key: 'investmentName',
+            templateOptions: {
+              label: 'Name of Investment:',
+              required: true,
+            },
+          }
+        ];
+
+        // this.fields[0].fieldArray!.fieldGroup = 
+        // [
+        //   ...this.fields[0].fieldArray!.fieldGroup!,
+        //   {
+        //     className: 'col-sm-4',
+        //     type: 'input',
+        //     key: 'investmentName',
+        //     templateOptions: {
+        //       label: 'Name of Investment:',
+        //       required: true,
+        //     },
+        //   }
+        // ];
+        // this.fields![0].fieldArray!.fieldGroup?[0] = {
+        //   ...this.fields![0].fieldArray!.fieldGroup.splice(0),
+        //   {
+        //     className: 'col-sm-4',
+        //     type: 'input',
+        //     key: 'investmentName',
+        //     templateOptions: {
+        //       label: 'Name of Investment:',
+        //       required: true,
+        //     },
+        //   },
+        // } as FormlyFieldConfig;
+        this.fields = [
+          ...this.fields,
+        ];
+      }, 10000);
     });
     this.dynamicFormsService.onDeleteField.subscribe((index) => {
       this.options.formState.focusedIndex = index - 1;
