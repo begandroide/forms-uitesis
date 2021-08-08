@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CustomInputExampleComponent } from './components/custom-input-example/custom-input-example.component';
 import { MaterialComponent } from './material.component';
 import { FormlyMaterialModule } from '@ngx-formly/material';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 import { FormlyModule } from '@ngx-formly/core';
 import { MaterialRoutingModule } from './material-routing.module';
 import { LayoutModule } from '../layout/layout.module';

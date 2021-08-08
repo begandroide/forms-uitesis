@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormlyModule } from '@ngx-formly/core';
 import { SharedModule } from './shared/shared.module';
-import { LayoutModule } from './layout/layout.module';
+import { LayoutModule } from './modules/layout/layout.module';
 import { RouterModule } from '@angular/router';
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { es_ES } from 'ng-zorro-antd/i18n';

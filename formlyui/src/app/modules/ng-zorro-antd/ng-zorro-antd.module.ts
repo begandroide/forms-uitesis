@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { NgZorroAntdRoutingModule } from './ng-zorro-antd-routing.module';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 import { FormlyModule } from '@ngx-formly/core';
 import { FormlyNgZorroAntdModule } from '@ngx-formly/ng-zorro-antd';
 import { FormlyNzFormFieldModule } from '@ngx-formly/ng-zorro-antd/form-field';
@@ -29,7 +29,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { HeaderComponent } from './wrappers/header/header.component';
 import { NzIconModule } from 'ng-zorro-antd/icon';
-import { IconsProviderModule } from '../icons-provider.module';
+import { IconsProviderModule } from '../../icons-provider.module';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { ContainerComponent } from './wrappers/container/container.component';
 import { NzSelectModule } from 'ng-zorro-antd/select';
