@@ -63,5 +63,6 @@ Además posee las funcionalidades:
 
 ## Ideas para seguir
 
-Existe una librería para angular llamada ngx-formly-desinger, la cual implementa la creación de un formulario usando bootstrap.
+1. Existe una librería para angular llamada ngx-formly-desinger, la cual implementa la creación de un formulario usando bootstrap.
 La idea es intentar extender la librería o adaptarla para nz-ant-design para homologar la UI.
+2. La segunda idea es utilizar componentes que contienen formularios dentro. (Sería la forma más simple). 
