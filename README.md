@@ -60,3 +60,8 @@ Además posee las funcionalidades:
 - [ ] Crear Componente Sección
 - [ ] Crear Componente que añadirá controles a las secciones.
 - [ ] Crear Servicio de formularios dinámicos para manejar índices
+
+## Ideas para seguir
+
+Existe una librería para angular llamada ngx-formly-desinger, la cual implementa la creación de un formulario usando bootstrap.
+La idea es intentar extender la librería o adaptarla para nz-ant-design para homologar la UI.
