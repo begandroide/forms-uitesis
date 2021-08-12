@@ -1,19 +1,22 @@
-import { AfterViewInit, Component, ComponentFactoryResolver, ElementRef, Input, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ComponentFactoryResolver, ElementRef, Input, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { KissInputComponent } from '../../../kiss-components/kiss-input/kiss-input.component';
 import { KissControlOption, KissControlType, KISS_CONTROL_TYPES } from '../../shared/kiss-control-types';
 import { KissSurveyHeaderComponent } from '../kiss-survey-header/kiss-survey-header.component';
 
 @Component({
   selector: 'app-kiss-survey-item',
   templateUrl: './kiss-survey-item.component.html',
-  styleUrls: ['./kiss-survey-item.component.scss']
+  styleUrls: ['./kiss-survey-item.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class KissSurveyItemComponent implements OnInit, AfterViewInit {
 
   @ViewChild('dynamicComponent', { read: ViewContainerRef}) dynamicComponentRef?: ViewContainerRef;
 
   @Input() controlType!: KissControlOption;
+  @Input() index!: number;
 
   controlTypes$: BehaviorSubject<KissControlOption[]> = new BehaviorSubject(KISS_CONTROL_TYPES);
 
