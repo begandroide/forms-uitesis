@@ -1,1 +1,33 @@
-<p>kiss-survey-item works!</p>
+<div class="w-full rounded border-2 border-gray-300 border-dashed flex-col gap-6 justify-items-stretch">
+    <form [formGroup]="form" nz-form nz-row class="items-start m-6" [nzLayout]="'vertical'">
+        <nz-form-item nz-col nzFlex="1">
+            <nz-form-label nzFor="question">Pregunta</nz-form-label>
+            <nz-form-control class="w-full">
+                <nz-textarea-count [nzMaxCharacterCount]="100">
+                    <textarea rows="2" nz-input formControlName="question"></textarea>
+                  </nz-textarea-count>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item nz-col nzFlex="1">
+            <nz-form-label nzFor="controlType">Tipo de pregunta</nz-form-label>
+            <nz-form-control class="w-full">
+                <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Escoge un tipo de pregunta" [nzAllowClear]="false"
+                    formControlName="controlType" name="controlType" id="controlType">
+                    <nz-option *ngFor="let control of (controlTypes$ | async)" [nzLabel]="control.label"
+                        [nzValue]="control.value" [nzCustomContent]="true">
+
+                        <i nz-icon nzType="info-circle" nzSize="small"></i>
+                        <span>{{control.label}}</span>
+
+                    </nz-option>
+                    <nz-divider></nz-divider>
+                </nz-select>
+
+            </nz-form-control>
+        </nz-form-item>
+    </form>
+
+    <div>
+        <ng-template #dynamicComponent></ng-template>
+    </div>
+</div>
