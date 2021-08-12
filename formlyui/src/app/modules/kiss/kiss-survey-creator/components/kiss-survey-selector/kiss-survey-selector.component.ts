@@ -1,12 +1,13 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
 import { KissControlOption, KISS_CONTROL_TYPES } from '../../shared/kiss-control-types';
 
 @Component({
   selector: 'app-kiss-survey-selector',
   templateUrl: './kiss-survey-selector.component.html',
-  styleUrls: ['./kiss-survey-selector.component.scss']
+  styleUrls: ['./kiss-survey-selector.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KissSurveySelectorComponent implements OnInit {
 
@@ -20,7 +21,6 @@ export class KissSurveySelectorComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.onControlTypeChanged();
   }
 
   /**
@@ -35,15 +35,15 @@ export class KissSurveySelectorComponent implements OnInit {
     });
   }
 
-  onControlTypeChanged(): void {
-    this.form.controls.controlType.valueChanges.subscribe(async controlType => {
-      if (controlType) {
-        // get value of controlType list
-        const finded = this.controlTypes$.getValue().find(p => p.value === controlType);
-        if (finded) {
-          this.optionChanged.emit(finded);
-        }
-      }
-    });
+  addQuestion() {
+    const { controlType } = this.form.value;
+    if (controlType) {
+      const finded = this.controlTypes$.getValue().find(p => p.value === controlType);
+      this.optionChanged.emit(finded);
+    }
+  }
+
+  get controlType(): AbstractControl {
+    return this.form.controls.controlType;
   }
 }
