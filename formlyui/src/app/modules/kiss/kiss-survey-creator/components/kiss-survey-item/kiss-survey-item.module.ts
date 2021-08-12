@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { KissSurveyItemComponent } from './kiss-survey-item.component';
+import { SharedModule } from '../../shared/shared.module';
 
 
 
@@ -12,7 +13,7 @@ import { KissSurveyItemComponent } from './kiss-survey-item.component';
     KissSurveyItemComponent
   ],
   imports: [
-    CommonModule
+    SharedModule
   ]
 })
 export class KissSurveyItemModule { }
