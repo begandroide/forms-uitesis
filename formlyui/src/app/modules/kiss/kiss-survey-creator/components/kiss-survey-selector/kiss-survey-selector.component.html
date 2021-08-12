@@ -1,1 +1,25 @@
-<p>kiss-survey-selector works!</p>
+<div class="w-full rounded border-2 border-gray-300 border-dashed">
+    <form [formGroup]="form" nz-form nz-row class="items-center">
+        <nz-form-item nz-col nzFlex="auto" class="mt-6">
+            <nz-form-label [nzSpan]="6" nzFor="controlType">Tipo de pregunta</nz-form-label>
+            <nz-form-control [nzSpan]="14">
+                <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Escoge un tipo de pregunta"
+                    formControlName="controlType" name="controlType" id="controlType">
+                    <nz-option *ngFor="let control of (controlTypes$ | async)" [nzLabel]="control.label"
+                        [nzValue]="control.value" [nzCustomContent]="true">
+
+                        <i nz-icon nzType="info-circle" nzSize="small"></i>
+                        <span>{{control.label}}</span>
+
+                    </nz-option>
+                    <nz-divider></nz-divider>
+                </nz-select>
+
+            </nz-form-control>
+        </nz-form-item>
+        <button nz-button nzType="primary" nz-col nzFlex="100px" class="m-6">
+            <i nz-icon nzType="plus"></i>
+            Añadir
+        </button>
+    </form>
+</div>

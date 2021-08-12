@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { KissSurveySelectorComponent } from './kiss-survey-selector.component';
-
-
+import { SharedModule } from 'src/app/modules/kiss/kiss-survey-creator/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +10,7 @@ import { KissSurveySelectorComponent } from './kiss-survey-selector.component';
     KissSurveySelectorComponent
   ],
   imports: [
-    CommonModule
+    SharedModule
   ]
 })
 export class KissSurveySelectorModule { }
