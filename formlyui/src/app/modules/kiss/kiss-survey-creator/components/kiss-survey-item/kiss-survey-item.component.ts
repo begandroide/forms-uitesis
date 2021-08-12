@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
 import { BehaviorSubject, Observable } from 'rxjs';
 import { KissInputComponent } from '../../../kiss-components/kiss-input/kiss-input.component';
 import { KissControlOption, KissControlType, KISS_CONTROL_TYPES } from '../../shared/kiss-control-types';
+import { KissSurveyItem } from '../../shared/kiss-survey-item';
 import { KissSurveyHeaderComponent } from '../kiss-survey-header/kiss-survey-header.component';
 
 @Component({
@@ -15,7 +16,7 @@ export class KissSurveyItemComponent implements OnInit, AfterViewInit {
 
   @ViewChild('dynamicComponent', { read: ViewContainerRef}) dynamicComponentRef?: ViewContainerRef;
 
-  @Input() controlType!: KissControlOption;
+  @Input() controlType!: KissSurveyItem;
   @Input() index!: number;
 
   controlTypes$: BehaviorSubject<KissControlOption[]> = new BehaviorSubject(KISS_CONTROL_TYPES);
@@ -27,7 +28,7 @@ export class KissSurveyItemComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     if (this.controlType) {
-      this.form.controls.controlType.setValue(this.controlType.value);
+      this.form.controls.controlType.setValue(this.controlType.type.value);
     }
   }
   
@@ -54,7 +55,7 @@ export class KissSurveyItemComponent implements OnInit, AfterViewInit {
       this.dynamicComponentRef.clear();
       const componentFactory = this.componentFactory.resolveComponentFactory(component);
       const componentRef = this.dynamicComponentRef?.createComponent(componentFactory);
-      // componentRef!.instance.question = this.form.controls.question.value;
+      componentRef!.instance.ngOnInit();
     }
   }
 

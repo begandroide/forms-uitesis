@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { KissControlOption } from './shared/kiss-control-types';
+import { KissSurveyItem } from './shared/kiss-survey-item';
 
 @Component({
   selector: 'app-kiss-survey-creator',
@@ -8,7 +9,7 @@ import { KissControlOption } from './shared/kiss-control-types';
 })
 export class KissSurveyCreatorComponent implements OnInit {
 
-  questionList: KissControlOption[] = [];
+  questionList: KissSurveyItem[] = [];
 
   constructor() { }
 
@@ -17,9 +18,10 @@ export class KissSurveyCreatorComponent implements OnInit {
 
   onOptionChanged(event: KissControlOption) {
     console.log(event);
+    const newItem = new KissSurveyItem(this.questionList.length + 1, event);
     // IF event value is not contained in questionList, add it
-    if (this.questionList.indexOf(event) === -1) {
-      this.questionList.push(event);
+    if (this.questionList.indexOf(newItem) === -1) {
+      this.questionList.push(newItem);
     }
   }
 }
