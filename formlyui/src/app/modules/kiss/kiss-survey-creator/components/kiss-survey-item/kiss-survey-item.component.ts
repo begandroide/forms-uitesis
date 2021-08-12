@@ -68,4 +68,17 @@ export class KissSurveyItemComponent implements OnInit, AfterViewInit {
       controlType: ['', [Validators.required]]
     });
   }
+
+  /** Getter of question control */
+  get questionControl(): AbstractControl {
+    return this.form.controls.question;
+  }
+
+  /** Getter title of survey item */
+  get title(): string {
+    if (this.questionControl.value) {
+      return `${this.index}. ${this.questionControl.value}`;
+    }
+    return `${this.index}. (Pregunta por definir)`;
+  }
 }
