@@ -5,6 +5,7 @@ import { KissSurveyCreatorRoutingModule } from './kiss-survey-creator-routing.mo
 import { KissSurveyCreatorComponent } from './kiss-survey-creator.component';
 import { KissSurveyItemModule } from './components/kiss-survey-item/kiss-survey-item.module';
 import { KissSurveySelectorModule } from './components/kiss-survey-selector/kiss-survey-selector.module';
+import { KissComponentsModule } from '../kiss-components/kiss-components.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { KissSurveySelectorModule } from './components/kiss-survey-selector/kiss
     CommonModule,
     KissSurveyCreatorRoutingModule,
     KissSurveyItemModule,
-    KissSurveySelectorModule
+    KissSurveySelectorModule,
+    KissComponentsModule
   ]
 })
 export class KissSurveyCreatorModule { }

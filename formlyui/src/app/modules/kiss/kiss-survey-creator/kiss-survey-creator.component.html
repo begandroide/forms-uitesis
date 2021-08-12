@@ -1,6 +1,6 @@
 
 <div class="inner-nocolor">
     <app-kiss-survey-selector (optionChanged)="onOptionChanged($event)"></app-kiss-survey-selector>
-    
-    <app-kiss-survey-item *ngFor="let item of questionList" [controlType]="item"></app-kiss-survey-item>
+
+    <app-kiss-survey-item *ngFor="let item of questionList; let i = index" [controlType]="item" [index]="i + 1"></app-kiss-survey-item>
 </div>
