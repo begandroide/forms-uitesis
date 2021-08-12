@@ -39,16 +39,23 @@ export class KissSurveyItemComponent implements OnInit, AfterViewInit {
   }
 
   createDynamicComponent() {
-    let component = {};
+    let component = null;
     switch (this.form.controls.controlType.value) {
       case KissControlType.Text:
+        component = KissInputComponent;
+        break;
       default:
         component = KissSurveyHeaderComponent;
         break;
     }
-    const componentFactory = this.componentFactory.resolveComponentFactory(KissSurveyHeaderComponent);
-    const componentRef = this.dynamicComponentRef?.createComponent(componentFactory);
-    // componentRef!.instance.question = this.form.controls.question.value;
+
+    // clear dynamic component
+    if (this.dynamicComponentRef) {
+      this.dynamicComponentRef.clear();
+      const componentFactory = this.componentFactory.resolveComponentFactory(component);
+      const componentRef = this.dynamicComponentRef?.createComponent(componentFactory);
+      // componentRef!.instance.question = this.form.controls.question.value;
+    }
   }
 
   /**
