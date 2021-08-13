@@ -21,7 +21,16 @@ Dadas las tendencias entre los desarrolladores, se ejecutó una prueba con las t
 
 Lo otro muy bueno de ngx-formly es su variedad de frameworks UI, teniendo disponible `Material UI`, `Bootstrap`, `ng-zorro-antd`, `KendoUI`. En donde todas ellas son muy renombradas en el ámbito de la ingeniería frontend en el extranjero.
 
-Por lo anterior, se trabajará con `@ngx-formly/core` dado su facilidad de extensión y uso, además de la potencialidad de tener un abanico de frameworks UI.
+Luego de hacer una POC(*Prove Of Concept*), en donde se desarrollaron las siguientes pruebas:
+1. Utilizar ngx-forms
+2. Utilizar @ng-dynamic-forms-core
+3. formio
+4. ng-formly
+5. Componentes personalizados a través de un selector y generador.
+
+Luego de medir la complejidad del desarrollo con las distintas herramientas, y buscando la facilidad y estandarización de datos, se trabajará con la opción 5; 
+de esta manera estamos en posición de personalizar más aún cada componente que el cliente necesite y podemos estructurar los datos de tal forma de luego dar 
+recomendaciones de preguntas semejantes o algún módulo inteligente.
 
 En cuanto a los frameworks UI disponibles, de momento hay preferencia por `ng-zorro-antd`, dada la diversidad de controles que posee. Además se está evaluando usar `TailwindCss` para desarrollar más rápido el esqueleto de la aplicación.
 
@@ -52,14 +61,6 @@ Además posee las funcionalidades:
 - Pregunta se puede mover de lugar en el formulario
 - Tiene botón eliminar y duplicar.
 - Tiene switch de si es obligatorio o no.
-
-## RoadMap
-
-- [X] Incluir Tailwindcss
-- [ ] Crear módulo de gestión de encuestas.
-- [ ] Crear Componente Sección
-- [ ] Crear Componente que añadirá controles a las secciones.
-- [ ] Crear Servicio de formularios dinámicos para manejar índices
 
 ## Ideas para seguir
 
