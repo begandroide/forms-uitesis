@@ -15,6 +15,10 @@ const routes: Routes = [
   {
     path: 'form-builder',
     loadChildren: () => import('./modules/form-builder/form-builder.module').then(m => m.FormBuilderModule)
+  },
+  {
+    path: 'kiss-builder',
+    loadChildren: () => import('./modules/kiss/kiss.module').then(m => m.KissModule)
   }
 ];
 

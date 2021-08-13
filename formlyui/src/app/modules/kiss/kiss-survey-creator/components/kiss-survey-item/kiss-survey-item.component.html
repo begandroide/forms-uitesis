@@ -1,0 +1,33 @@
+<div class="w-full rounded border-2 border-gray-300 border-dashed flex-col gap-6 justify-items-stretch">
+    <div class="m-6">
+        <h1 class="text-xl font-semibold text-gray-700">{{ title }}</h1>
+    </div>
+    <form [formGroup]="form" nz-form nz-row class="items-start m-6" [nzLayout]="'vertical'">
+        <nz-form-item nz-col nzFlex="1">
+            <nz-form-label nzFor="question">Pregunta</nz-form-label>
+            <nz-form-control class="w-full">
+                <nz-textarea-count [nzMaxCharacterCount]="100">
+                    <textarea rows="2" [nzBorderless]="false" placeholder="Escriba la pregunta en este campo" nz-input
+                        formControlName="question"></textarea>
+                </nz-textarea-count>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item nz-col nzFlex="1">
+            <nz-form-label nzFor="controlType">Tipo de pregunta</nz-form-label>
+            <nz-form-control class="w-full">
+                <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Escoge un tipo de pregunta" [nzAllowClear]="false"
+                    formControlName="controlType" name="controlType" id="controlType">
+                    <nz-option-group *ngFor="let group of (controlTypes$ | async)" [nzLabel]="group.label">
+                        <nz-option *ngFor="let control of group.controls" [nzValue]="control.value" [nzLabel]="control.label"></nz-option>
+                    </nz-option-group>
+                    <nz-divider></nz-divider>
+                </nz-select>
+
+            </nz-form-control>
+        </nz-form-item>
+    </form>
+
+    <div class="m-6">
+        <ng-template #dynamicComponent></ng-template>
+    </div>
+</div>
