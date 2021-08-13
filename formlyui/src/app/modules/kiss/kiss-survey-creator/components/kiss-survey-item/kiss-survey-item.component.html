@@ -17,13 +17,9 @@
             <nz-form-control class="w-full">
                 <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Escoge un tipo de pregunta" [nzAllowClear]="false"
                     formControlName="controlType" name="controlType" id="controlType">
-                    <nz-option *ngFor="let control of (controlTypes$ | async)" [nzLabel]="control.label"
-                        [nzValue]="control.value" [nzCustomContent]="true">
-
-                        <i nz-icon nzType="info-circle" nzSize="small"></i>
-                        <span>{{control.label}}</span>
-
-                    </nz-option>
+                    <nz-option-group *ngFor="let group of (controlTypes$ | async)" [nzLabel]="group.label">
+                        <nz-option *ngFor="let control of group.controls" [nzValue]="control.value" [nzLabel]="control.label"></nz-option>
+                    </nz-option-group>
                     <nz-divider></nz-divider>
                 </nz-select>
 

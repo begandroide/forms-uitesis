@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
-import { KissControlOption, KISS_CONTROL_TYPES } from '../../shared/kiss-control-types';
+import { KissControlDefinition, KissControlOption, KISS_CONTROL_TYPES } from '../../shared/kiss-control-types';
 
 @Component({
   selector: 'app-kiss-survey-selector',
@@ -14,7 +14,7 @@ export class KissSurveySelectorComponent implements OnInit {
   @Output() optionChanged: EventEmitter<KissControlOption> = new EventEmitter();
 
   form: FormGroup;
-  controlTypes$: BehaviorSubject<KissControlOption[]> = new BehaviorSubject(KISS_CONTROL_TYPES);
+  controlTypes$: BehaviorSubject<KissControlDefinition[]> = new BehaviorSubject(KISS_CONTROL_TYPES);
 
   constructor(private formBuilder: FormBuilder) {
     this.form = this.buildForm();
@@ -38,7 +38,7 @@ export class KissSurveySelectorComponent implements OnInit {
   addQuestion() {
     const { controlType } = this.form.value;
     if (controlType) {
-      const finded = this.controlTypes$.getValue().find(p => p.value === controlType);
+      const finded: KissControlOption = this.controlTypes$.getValue().find(p => p.controls.find(o => o.value == controlType))!.controls.find(o => o.value == controlType)!;
       this.optionChanged.emit(finded);
     }
   }

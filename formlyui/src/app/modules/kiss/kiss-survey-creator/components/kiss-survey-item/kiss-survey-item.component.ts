@@ -3,7 +3,7 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/operators';
 import { KissInputComponent, KissTextareaComponent } from '../../../kiss-components';
-import { KissControlOption, KissControlType, KISS_CONTROL_TYPES } from '../../shared/kiss-control-types';
+import { KissControlDefinition, KissControlOption, KissControlType, KISS_CONTROL_TYPES } from '../../shared/kiss-control-types';
 import { KissSurveyItem } from '../../shared/kiss-survey-item';
 import { KissSurveyHeaderComponent } from '../kiss-survey-header/kiss-survey-header.component';
 
@@ -20,7 +20,7 @@ export class KissSurveyItemComponent implements OnInit, AfterViewInit {
   @Input() controlType!: KissSurveyItem;
   @Input() index!: number;
 
-  controlTypes$: BehaviorSubject<KissControlOption[]> = new BehaviorSubject(KISS_CONTROL_TYPES);
+  controlTypes$: BehaviorSubject<KissControlDefinition[]> = new BehaviorSubject(KISS_CONTROL_TYPES);
 
   form: FormGroup;
   controlTypeSubscription?: Subscription;;
