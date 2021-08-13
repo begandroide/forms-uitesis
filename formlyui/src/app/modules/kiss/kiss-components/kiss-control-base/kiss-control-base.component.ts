@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Injector, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Injector, OnInit, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { VisibilityMode } from '../visibility-modes';
 
@@ -8,6 +8,7 @@ import { VisibilityMode } from '../visibility-modes';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class KissControlBaseComponent implements OnInit {
+
   visibilityMode!: VisibilityMode; 
   form: FormGroup;
 
@@ -24,6 +25,10 @@ export class KissControlBaseComponent implements OnInit {
     this.switchVisibilityMode();
   }
 
+  changeVisibilityMode(changes: VisibilityMode): void {
+    this.visibilityMode = changes;
+    this.switchVisibilityMode();
+  }
   /** 
    * switch over the visibility mode
    **/
@@ -33,7 +38,10 @@ export class KissControlBaseComponent implements OnInit {
         this.form.disable();
         this.cdRef.detectChanges();
         break;
-      case VisibilityMode.Preview:
+        case VisibilityMode.Preview:
+          this.form.enable();
+          this.cdRef.detectChanges();
+        break;
       case VisibilityMode.Answering:
       case VisibilityMode.Closed:
       case VisibilityMode.Hidding:
