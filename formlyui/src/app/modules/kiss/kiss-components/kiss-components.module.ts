@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { KissInputModule } from './kiss-input/kiss-input.module';
+import { KissTextareaModule } from './kiss-textarea/kiss-textarea.module';
 
 
 
@@ -8,10 +9,12 @@ import { KissInputModule } from './kiss-input/kiss-input.module';
   declarations: [],
   imports: [
     CommonModule,
-    KissInputModule
+    KissInputModule,
+    KissTextareaModule
   ],
   exports: [
-    KissInputModule
+    KissInputModule,
+    KissTextareaModule
   ]
 })
 export class KissComponentsModule { }
