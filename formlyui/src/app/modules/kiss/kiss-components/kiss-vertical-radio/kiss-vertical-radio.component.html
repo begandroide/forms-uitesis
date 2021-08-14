@@ -1,14 +1,18 @@
 <form [formGroup]="form" nz-form>
     <nz-form-item>
         <nz-form-control class="w-full">
-            <nz-radio-group formControlName="input" class="w-full grid gap-2">
-                <label *ngFor="let option of options; let i = index" nz-radio class="flex-row">
+            <nz-radio-group cdkDropList formControlName="input" class="w-full grid gap-2 example-list" (cdkDropListDropped)="drop($event)">
+                
+                <label cdkDrag cdkDragBoundary=".example-list" *ngFor="let option of options; let i = index" nz-radio class="flex-row example-box">
                     <textarea nz-input nzAutosize rows="1" [nzBorderless]="i !== focusIndex" [autocomplete]="false"
-                        [value]="option.value" (focus)="onFocus(i)" (blur)="onBlur()"
-                        [disabled]="(!!option.extraProperties?.isOther)"></textarea>
+                    [value]="option.value" (focus)="onFocus(i)" (blur)="onBlur()"
+                    [disabled]="(!!option.extraProperties?.isOther)"></textarea>
                     <i nz-icon nzType="close" class="hover:scale-110 cursor-pointer text-black"
                         (click)="removeOptionAtIndex(i)"></i>
+                    <i nz-icon nzType="drag" class="hover:scale-110 cursor-pointer text-black" cdkDragHandle></i>
                 </label>
+
+                <!-- Añadir "otro" o una nueva opción -->
                 <label nz-radio nzDisabled>
                     <input nz-input [value]="'Añadir opción'" (click)="onAddOption(input)" #input />
                     <ng-container [ngTemplateOutlet]="OtherOptionTemplate" *ngIf="!hasOther"></ng-container>

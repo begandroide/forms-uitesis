@@ -1,3 +1,4 @@
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, Injector, OnInit, ViewEncapsulation } from '@angular/core';
 import { OptionModel } from 'src/app/shared/models';
 import { KissControlBaseComponent } from '../kiss-control-base/kiss-control-base.component';
@@ -47,5 +48,9 @@ export class KissVerticalRadioComponent extends KissControlBaseComponent impleme
 
   onBlur(): void {
     delete this.focusIndex;
+  }
+
+  drop(event: CdkDragDrop<OptionModel>) {
+    moveItemInArray(this.options, event.previousIndex, event.currentIndex);
   }
 }

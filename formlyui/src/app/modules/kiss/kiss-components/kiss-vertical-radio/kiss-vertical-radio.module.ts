@@ -7,6 +7,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzRadioModule } from 'ng-zorro-antd/radio';
 import { IconsProviderModule } from 'src/app/icons-provider.module';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
 
@@ -21,7 +22,8 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
     NzInputModule,
     NzButtonModule,
     NzRadioModule,
-    IconsProviderModule
+    IconsProviderModule,
+    DragDropModule
   ]
 })
 export class KissVerticalRadioModule { }
