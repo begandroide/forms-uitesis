@@ -11,7 +11,8 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+  ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
