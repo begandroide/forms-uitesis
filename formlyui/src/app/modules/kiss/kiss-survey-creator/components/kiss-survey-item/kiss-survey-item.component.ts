@@ -17,7 +17,7 @@ export class KissSurveyItemComponent implements OnInit, AfterViewInit {
 
   @ViewChild('dynamicComponent', { read: ViewContainerRef}) dynamicComponentRef?: ViewContainerRef;
 
-  @Input() visibilityMode!: Observable<VisibilityMode>;
+  @Input() visibilityMode!: BehaviorSubject<VisibilityMode>;
   @Input() controlType!: KissSurveyItem;
   @Input() index!: number;
 
@@ -27,6 +27,7 @@ export class KissSurveyItemComponent implements OnInit, AfterViewInit {
   controlTypeSubscription?: Subscription;
 
   componentReference?: any; 
+  editorVisible: boolean = true;
 
   constructor(private formBuilder: FormBuilder, private componentFactory: ComponentFactoryResolver) {
     this.form = this.buildForm();
@@ -38,6 +39,7 @@ export class KissSurveyItemComponent implements OnInit, AfterViewInit {
     }
     if (this.visibilityMode) {
       this.visibilityMode.subscribe(mode => {
+        this.editorVisible = mode === VisibilityMode.Editor;
         if (this.componentReference) {
          this.componentReference.instance.changeVisibilityMode(mode);
         }
@@ -76,7 +78,7 @@ export class KissSurveyItemComponent implements OnInit, AfterViewInit {
       this.dynamicComponentRef.clear();
       const componentFactory = this.componentFactory.resolveComponentFactory(component);
       this.componentReference = this.dynamicComponentRef?.createComponent(componentFactory);
-      this.componentReference.instance.visibilityMode = VisibilityMode.Editor;
+      this.componentReference.instance.visibilityMode = this.visibilityMode.getValue();
       this.componentReference.instance.ngOnInit();
     }
   }
@@ -113,4 +115,5 @@ export class KissSurveyItemComponent implements OnInit, AfterViewInit {
     }
     return `${this.index}. (Pregunta por definir)`;
   }
+
 }
