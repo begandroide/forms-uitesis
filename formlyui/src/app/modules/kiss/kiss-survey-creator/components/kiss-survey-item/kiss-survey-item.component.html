@@ -2,7 +2,7 @@
     <div class="m-6">
         <h1 class="text-xl font-semibold text-gray-700">{{ title }}</h1>
     </div>
-    <form [formGroup]="form" nz-form nz-row class="items-start m-6" [nzLayout]="'vertical'">
+    <form [formGroup]="form" nz-form nz-row class="items-start m-6 ease-in-out" [nzLayout]="'vertical'" [ngClass]="{'hidden': !editorVisible}">
         <nz-form-item nz-col nzFlex="1">
             <nz-form-label nzFor="question">Pregunta</nz-form-label>
             <nz-form-control class="w-full">

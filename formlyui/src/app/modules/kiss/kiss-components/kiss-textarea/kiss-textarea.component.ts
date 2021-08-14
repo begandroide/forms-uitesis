@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, Injector, OnInit } from '@angular/core';
+import { KissControlBaseComponent } from '../kiss-control-base/kiss-control-base.component';
 
 @Component({
   selector: 'app-kiss-textarea',
@@ -7,27 +7,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./kiss-textarea.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class KissTextareaComponent implements OnInit {
-  form: FormGroup;
+export class KissTextareaComponent extends KissControlBaseComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder, private cdRef: ChangeDetectorRef) {
-    this.form = this.buildForm();
+  constructor(injector: Injector) {
+    super(injector);
   }
 
   ngOnInit(): void {
-    this.form.disable();
-    this.cdRef.detectChanges();
+    super.ngOnInit();
   }
 
-  /** Build form 
-   *  
-   * @return FormGroup
-  */
-  buildForm(): FormGroup {
-    return this.formBuilder.group({
-      input: ['', [
-        Validators.required
-      ]]
-    });
-  }
 }

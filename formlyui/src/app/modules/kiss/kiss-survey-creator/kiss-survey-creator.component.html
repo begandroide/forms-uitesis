@@ -1,6 +1,15 @@
-
 <div class="inner-nocolor">
+
+    <div class="flex justify-between items-center col-span-1">
+        <div class="w-16 h-10 flex items-center bg-gray-300 rounded-full p-1 duration-100 ease-in-out"
+            [ngClass]="{ 'bg-green-400': toggleActive}" (click)="toggleVisibilityMode()">
+            <div class="bg-white w-8 h-8 rounded-full shadow-md transform duration-100 ease-in-out"
+                [ngClass]="{ 'translate-x-6': toggleActive}"></div>
+        </div>
+    </div>
+
     <app-kiss-survey-selector (optionChanged)="onOptionChanged($event)"></app-kiss-survey-selector>
 
-    <app-kiss-survey-item *ngFor="let item of questionList; let i = index" [controlType]="item" [index]="i + 1"></app-kiss-survey-item>
+    <app-kiss-survey-item *ngFor="let item of questionList; let i = index" [controlType]="item" [index]="i + 1" [visibilityMode]="visibilityMode$">
+    </app-kiss-survey-item>
 </div>

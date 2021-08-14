@@ -1,11 +1,11 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, ComponentFactoryResolver, ElementRef, Input, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ComponentFactoryResolver, Input, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/operators';
 import { KissInputComponent, KissTextareaComponent } from '../../../kiss-components';
-import { KissControlDefinition, KissControlOption, KissControlType, KISS_CONTROL_TYPES } from '../../shared/kiss-control-types';
+import { VisibilityMode } from 'src/app/modules/kiss/kiss-components';
+import { KissControlDefinition, KissControlType, KISS_CONTROL_TYPES } from '../../shared/kiss-control-types';
 import { KissSurveyItem } from '../../shared/kiss-survey-item';
-import { KissSurveyHeaderComponent } from '../kiss-survey-header/kiss-survey-header.component';
 
 @Component({
   selector: 'app-kiss-survey-item',
@@ -17,13 +17,18 @@ export class KissSurveyItemComponent implements OnInit, AfterViewInit {
 
   @ViewChild('dynamicComponent', { read: ViewContainerRef}) dynamicComponentRef?: ViewContainerRef;
 
+  @Input() visibilityMode!: BehaviorSubject<VisibilityMode>;
   @Input() controlType!: KissSurveyItem;
   @Input() index!: number;
 
   controlTypes$: BehaviorSubject<KissControlDefinition[]> = new BehaviorSubject(KISS_CONTROL_TYPES);
 
   form: FormGroup;
-  controlTypeSubscription?: Subscription;;
+  controlTypeSubscription?: Subscription;
+
+  componentReference?: any; 
+  editorVisible: boolean = true;
+
   constructor(private formBuilder: FormBuilder, private componentFactory: ComponentFactoryResolver) {
     this.form = this.buildForm();
   }
@@ -31,6 +36,14 @@ export class KissSurveyItemComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     if (this.controlType) {
       this.form.controls.controlType.setValue(this.controlType.type.value);
+    }
+    if (this.visibilityMode) {
+      this.visibilityMode.subscribe(mode => {
+        this.editorVisible = mode === VisibilityMode.Editor;
+        if (this.componentReference) {
+         this.componentReference.instance.changeVisibilityMode(mode);
+        }
+      });
     }
   }
   
@@ -44,7 +57,7 @@ export class KissSurveyItemComponent implements OnInit, AfterViewInit {
 
   ngOnDestroy(): void {
     this.controlTypeSubscription && this.controlTypeSubscription.unsubscribe();
-  }    
+  }
 
   #createDynamicComponent(controlType: KissControlType) {
     let component = null;
@@ -56,7 +69,7 @@ export class KissSurveyItemComponent implements OnInit, AfterViewInit {
         component = KissTextareaComponent;
         break;
       default:
-        component = KissSurveyHeaderComponent;
+        component = KissInputComponent;
         break;
     }
 
@@ -64,8 +77,9 @@ export class KissSurveyItemComponent implements OnInit, AfterViewInit {
     if (this.dynamicComponentRef) {
       this.dynamicComponentRef.clear();
       const componentFactory = this.componentFactory.resolveComponentFactory(component);
-      const componentRef = this.dynamicComponentRef?.createComponent(componentFactory);
-      componentRef!.instance.ngOnInit();
+      this.componentReference = this.dynamicComponentRef?.createComponent(componentFactory);
+      this.componentReference.instance.visibilityMode = this.visibilityMode.getValue();
+      this.componentReference.instance.ngOnInit();
     }
   }
 
@@ -101,4 +115,5 @@ export class KissSurveyItemComponent implements OnInit, AfterViewInit {
     }
     return `${this.index}. (Pregunta por definir)`;
   }
+
 }
