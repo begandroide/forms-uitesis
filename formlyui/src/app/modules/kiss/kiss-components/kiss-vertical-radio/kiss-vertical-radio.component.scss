@@ -1,0 +1,27 @@
+
+app-kiss-vertical-radio {
+    [nz-radio] {
+        display: flex;
+        line-height: 32px;
+
+        span:first-child {
+            flex: none;
+        }
+
+        span:nth-child(2) {
+            display: flex;
+            flex: auto;
+            flex-direction: row;
+
+            input {
+                margin-left: 10px;
+                flex: auto;
+            }
+    
+            button {
+                flex: none;
+            }
+        }
+
+    }
+}

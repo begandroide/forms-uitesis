@@ -1,0 +1,22 @@
+<form [formGroup]="form" nz-form>
+    <nz-form-item>
+        <nz-form-control class="w-full">
+            <nz-radio-group formControlName="input" class="w-full grid gap-2">
+                <label *ngFor="let option of options" nz-radio class="flex-row">
+                    <input nz-input nzBorderless [autocomplete]="false" [value]="option.value"
+                        [disabled]="(!!option.extraProperties?.isOther)" />
+                    <button nz-button nzType="text" nzShape="circle"><i nz-icon nzType="close"></i></button>
+                </label>
+                <label nz-radio nzDisabled>
+                    <input nz-input [value]="'Añadir opción'" (click)="onAddOption(input)" #input/>
+                    <ng-container [ngTemplateOutlet]="OtherOptionTemplate" *ngIf="!hasOther"></ng-container>
+                </label>
+            </nz-radio-group>
+        </nz-form-control>
+    </nz-form-item>
+</form>
+
+<ng-template #OtherOptionTemplate let-option>
+    o
+    <a nz-button nzType="link" *ngIf="!hasOther" (click)="onAddOtherOption()">añadir respuesta "Otro"</a>
+</ng-template>
