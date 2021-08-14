@@ -56,6 +56,7 @@ Posee un selector en donde uno puede elegir el tipo de control o de pregunta, lo
 9. Cuadrícula de casillas
 10. Fecha
 11. Hora
+12. Slider de porcentaje
 
 Además posee las funcionalidades:
 - Pregunta se puede mover de lugar en el formulario
