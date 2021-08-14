@@ -12,8 +12,10 @@ app-kiss-vertical-radio {
             display: flex;
             flex: auto;
             flex-direction: row;
+            align-items: center;
 
-            input {
+            input,
+            textarea {
                 margin-left: 10px;
                 flex: auto;
             }
