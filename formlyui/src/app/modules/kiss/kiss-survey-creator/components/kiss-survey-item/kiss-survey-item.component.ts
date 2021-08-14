@@ -4,8 +4,9 @@ import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/operators';
 import { KissInputComponent, KissTextareaComponent } from '../../../kiss-components';
 import { VisibilityMode } from 'src/app/modules/kiss/kiss-components';
-import { KissControlDefinition, KissControlType, KISS_CONTROL_TYPES } from '../../shared/kiss-control-types';
+import { KissControlDefinition, KissControlType, KISS_CONTROL_TYPES } from '../../../kiss-components/kiss-control-types';
 import { KissSurveyItem } from '../../shared/kiss-survey-item';
+import { KissVerticalRadioComponent } from '../../../kiss-components/kiss-vertical-radio/kiss-vertical-radio.component';
 
 @Component({
   selector: 'app-kiss-survey-item',
@@ -67,6 +68,9 @@ export class KissSurveyItemComponent implements OnInit, AfterViewInit {
         break;
       case KissControlType.Textarea:
         component = KissTextareaComponent;
+        break;
+      case KissControlType.Radio:
+        component = KissVerticalRadioComponent;
         break;
       default:
         component = KissInputComponent;

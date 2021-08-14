@@ -1,4 +1,4 @@
-import { KissControlOption } from "./kiss-control-types";
+import { KissControlOption } from "../../kiss-components/kiss-control-types";
 
 export class KissSurveyItem {
     id: string;

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { VisibilityMode } from '../kiss-components/visibility-modes';
-import { KissControlOption } from './shared/kiss-control-types';
+import { VisibilityMode } from '../kiss-components/kiss-visibility-modes';
+import { KissControlOption } from '../kiss-components/kiss-control-types';
 import { KissSurveyItem } from './shared/kiss-survey-item';
 
 @Component({

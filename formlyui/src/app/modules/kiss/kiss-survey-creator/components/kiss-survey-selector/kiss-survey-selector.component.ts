@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
-import { KissControlDefinition, KissControlOption, KISS_CONTROL_TYPES } from '../../shared/kiss-control-types';
+import { KissControlDefinition, KissControlOption, KISS_CONTROL_TYPES } from '../../../kiss-components/kiss-control-types';
 
 @Component({
   selector: 'app-kiss-survey-selector',

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Injector, OnInit, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { VisibilityMode } from '../visibility-modes';
+import { VisibilityMode } from '../kiss-visibility-modes';
 
 @Component({
   selector: 'app-kiss-control-base',
