@@ -68,3 +68,33 @@ Además posee las funcionalidades:
 1. Existe una librería para angular llamada ngx-formly-desinger, la cual implementa la creación de un formulario usando bootstrap.
 La idea es intentar extender la librería o adaptarla para nz-ant-design para homologar la UI.
 2. La segunda idea es utilizar componentes que contienen formularios dentro. (Sería la forma más simple). 
+
+
+## Un enfoque relacional
+
+__Supongamos que hacemos las encuestas dinámicas:__
+
+Las preguntas serán ingresadas manualmente, por lo que no será facil establecer relaciones entre preguntas en los distintos semestres
+para luego visualizar los datos como se requieren. Es sabido gracias a la documentación proveída, que las preguntas en los años no cambian
+(y si cambiasen podemos crear una "enmienda" de la pregunta para no perder la trazabilidad de la pregunta).
+
+Las opciones ingresadas tampoco serán estandar por lo que caeremos en la misma problemática anterior. Podremos visualizar resultados 
+pero solo del semestre, será difícil establecer relaciones.
+
+
+__¿Y qué con un banco de preguntas dependiendo de la entidad que sea encuestada?:__
+
+Supongamos creamos un *mantenedor de "temáticas"*, las cuales podrían ser:
+- Evaluación por Alumno.
+- Evaluación por Docente.
+- Evaluación por Ayudante.
+- Evaluación por para-docente.
+
+El flujo debiese ser:
+1. Ir a módulo mantenedor de temáticas.
+   1. Crear una entidad de temática, podemos proveer nombre de temática, descripción de temática, usuarios objetivos.
+2. Ir a módulo mantenedor de preguntas.
+   1. Crear de forma rápida preguntas relacionadas a una temática antes inscrita en el sistema.
+      1. Las preguntas deben tener tipo de control, opciones en caso de ser necesario.
+
+

@@ -1,20 +1,50 @@
 <form [formGroup]="form" nz-form>
     <nz-form-item>
         <nz-form-control class="w-full">
-            <nz-radio-group cdkDropList formControlName="input" class="w-full grid gap-2 example-list" (cdkDropListDropped)="drop($event)">
-                
-                <label cdkDrag cdkDragBoundary=".example-list" *ngFor="let option of options; let i = index" nz-radio class="flex-row example-box">
-                    <textarea nz-input nzAutosize rows="1" [nzBorderless]="i !== focusIndex" [autocomplete]="false"
-                    [value]="option.value" (focus)="onFocus(i)" (blur)="onBlur()"
-                    [disabled]="(!!option.extraProperties?.isOther)"></textarea>
-                    <i nz-icon nzType="close" class="hover:scale-110 cursor-pointer text-black"
-                        (click)="removeOptionAtIndex(i)"></i>
-                    <i nz-icon nzType="drag" class="hover:scale-110 cursor-pointer text-black" cdkDragHandle></i>
+            <nz-radio-group cdkDropList formControlName="input" class="w-full grid gap-2 example-list"
+                (cdkDropListDropped)="drop($event)">
+
+                <label cdkDrag cdkDragBoundary=".example-list" *ngFor="let option of options; let i = index" nz-radio
+                    [nzValue]="option.value" class="flex-row example-box">
+
+                    <div class="w-full flex flex-row items-start gap-3">
+                        <div class="flex-auto">
+                            <textarea nz-input nzAutosize rows="1" [nzBorderless]="i !== focusIndex"
+                                [autocomplete]="false" [value]="option.label" (focus)="onFocus(i)" (blur)="onBlur()"></textarea>
+                        </div>
+
+                        <i nz-icon nzType="close" class="hover:scale-110 cursor-pointer text-black flex-none"
+                            (click)="removeOptionAtIndex(i)"></i>
+                        <i nz-icon nzType="drag" class="hover:scale-110 cursor-pointer text-black flex-none"
+                            cdkDragHandle></i>
+                    </div>
                 </label>
 
+                <label *ngIf="hasOther" nz-radio [nzValue]="'other'" class="flex-row">
+
+                    <div class="w-full flex flex-row items-start gap-3">
+                        <div class="flex-auto">
+                            <input nz-input rows="1"
+                                [value]="'Otro...'" 
+                                [disabled]="true"/>
+                        </div>
+
+                        <i nz-icon nzType="close" class="hover:scale-110 cursor-pointer text-black flex-none"
+                            (click)="removeOtherOption()"></i>
+
+                        <!-- Mock option para no romper la visual -->
+                        <i nz-icon nzType="drag" class="invisible flex-none"></i>
+                    </div>
+                </label>
+
+
+
                 <!-- Añadir "otro" o una nueva opción -->
-                <label nz-radio nzDisabled>
-                    <input nz-input [value]="'Añadir opción'" (click)="onAddOption(input)" #input />
+                <label nz-radio>
+                    <div class="ant-input w-auto pr-4 mr-6" (click)="onAddOption()">
+                        <span class="text-black">Añadir opción</span>
+                    </div>
+                    <!-- <input nz-input [value]="'Añadir opción'" (click)="onAddOption(input)" #input /> -->
                     <ng-container [ngTemplateOutlet]="OtherOptionTemplate" *ngIf="!hasOther"></ng-container>
                 </label>
             </nz-radio-group>

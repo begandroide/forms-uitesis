@@ -28,18 +28,31 @@ export class KissVerticalRadioComponent extends KissControlBaseComponent impleme
     super.ngOnInit();
   }
 
-  onAddOption(input: HTMLInputElement): void {
-    this.options.push({ value: this.options.length + 1, label: 'Escriba la opción ' + (this.options.length + 1) + '...' });
-    input.blur();
+  onAddOption(): void {
+    const newOption = this.#createNewOption();
+    // if (this.hasOther) {
+    //   // insert option at n-1 position
+    //   this.options.splice(this.options.length - 1, 0, newOption);
+    // } else {
+    // }
+    this.options.push(newOption);
+  }
+
+  #createNewOption(): OptionModel {
+    return { value: this.options.length + 1, label: 'Escriba la opción ' + (this.options.length + 1) + '...' };
   }
 
   onAddOtherOption(): void {
-    this.options.push({ value: 'Otro', label: 'Otro', extraProperties: { isOther: true } });
+    // this.options.push({ value: 'Otro', label: 'Otro', extraProperties: { isOther: true } });
     this.hasOther = true;
   }
 
   removeOptionAtIndex(index: number): void {
     this.options.splice(index, 1);
+  }
+
+  removeOtherOption(): void {
+    this.hasOther = false;
   }
 
   onFocus(index: number): void {
@@ -51,6 +64,8 @@ export class KissVerticalRadioComponent extends KissControlBaseComponent impleme
   }
 
   drop(event: CdkDragDrop<OptionModel>) {
+    this.options[event.previousIndex].value = event.currentIndex + 1;
+    this.options[event.currentIndex].value = event.previousIndex + 1;
     moveItemInArray(this.options, event.previousIndex, event.currentIndex);
   }
 }

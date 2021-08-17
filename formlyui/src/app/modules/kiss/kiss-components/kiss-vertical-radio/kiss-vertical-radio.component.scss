@@ -3,26 +3,23 @@ app-kiss-vertical-radio {
     [nz-radio] {
         display: flex;
         line-height: 32px;
+        align-items: flex-start;
+        cursor: default !important;
 
         span:first-child {
             flex: none;
+            cursor: default !important;
+            input {
+              cursor: default !important;
+            }
         }
-
+        
         span:nth-child(2) {
+            cursor: default !important;
             display: flex;
             flex: auto;
             flex-direction: row;
             align-items: center;
-
-            input,
-            textarea {
-                margin-left: 10px;
-                flex: auto;
-            }
-    
-            button {
-                flex: none;
-            }
         }
 
     }
