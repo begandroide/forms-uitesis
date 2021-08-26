@@ -9,13 +9,18 @@
 
                     <div class="w-full flex flex-row items-start gap-3">
                         <div class="flex-auto">
-                            <textarea nz-input nzAutosize rows="1" [nzBorderless]="i !== focusIndex"
-                                [autocomplete]="false" [value]="option.label" (focus)="onFocus(i)" (blur)="onBlur()"></textarea>
+                            <ng-container *ngIf="!form.disabled; else inputData">
+                                <span>{{option.label}}</span>
+                            </ng-container>
+                            <ng-template #inputData>
+                                <textarea nz-input nzAutosize rows="1" [nzBorderless]="i !== focusIndex"
+                                    [autocomplete]="false" [value]="option.label" (focus)="onFocus(i)" (blur)="onBlur()"></textarea>
+                            </ng-template>
                         </div>
 
-                        <i nz-icon nzType="close" class="hover:scale-110 cursor-pointer text-black flex-none"
+                        <i *ngIf="form.disabled" nz-icon nzType="close" class="hover:scale-110 cursor-pointer text-black flex-none"
                             (click)="removeOptionAtIndex(i)"></i>
-                        <i nz-icon nzType="drag" class="hover:scale-110 cursor-pointer text-black flex-none"
+                        <i *ngIf="form.disabled" nz-icon nzType="drag" class="hover:scale-110 cursor-pointer text-black flex-none"
                             cdkDragHandle></i>
                     </div>
                 </label>
@@ -26,25 +31,24 @@
                         <div class="flex-auto">
                             <input nz-input rows="1"
                                 [value]="'Otro...'" 
-                                [disabled]="true"/>
+                                [disabled]="!form.disable || form.controls.input.value !== 'other'"/>
                         </div>
 
-                        <i nz-icon nzType="close" class="hover:scale-110 cursor-pointer text-black flex-none"
+                        <i *ngIf="form.disabled" nz-icon nzType="close" class="hover:scale-110 cursor-pointer text-black flex-none"
                             (click)="removeOtherOption()"></i>
 
                         <!-- Mock option para no romper la visual -->
-                        <i nz-icon nzType="drag" class="invisible flex-none"></i>
+                        <i *ngIf="form.disabled" nz-icon nzType="drag" class="invisible flex-none"></i>
                     </div>
                 </label>
 
 
 
                 <!-- Añadir "otro" o una nueva opción -->
-                <label nz-radio>
+                <label nz-radio *ngIf="form.disabled">
                     <div class="ant-input w-auto pr-4 mr-6" (click)="onAddOption()">
                         <span class="text-black">Añadir opción</span>
                     </div>
-                    <!-- <input nz-input [value]="'Añadir opción'" (click)="onAddOption(input)" #input /> -->
                     <ng-container [ngTemplateOutlet]="OtherOptionTemplate" *ngIf="!hasOther"></ng-container>
                 </label>
             </nz-radio-group>
